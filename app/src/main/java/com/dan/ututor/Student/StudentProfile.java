@@ -1,7 +1,9 @@
-package com.dan.ututor;
+package com.dan.ututor.Student;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.dan.ututor.R;
 
 public class StudentProfile extends AppCompatActivity {
 
