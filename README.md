@@ -1,2 +1,0 @@
-# uTutor
-Android App
