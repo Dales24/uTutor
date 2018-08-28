@@ -5,7 +5,7 @@ public class Student {
     private String email;
     private String password;
     private int ID;
-
+    public int name;
     public Student() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
