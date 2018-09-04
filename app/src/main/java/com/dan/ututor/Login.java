@@ -4,10 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.dan.ututor.Student.Student;
-import com.dan.ututor.Student.Tutor;
+import com.dan.ututor.Student.Person;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -44,11 +43,11 @@ public class Login extends AppCompatActivity {
         dbRef.child("Students").child(Integer.toString(ID)).setValue(st);
 
         ID=10002;
-        Tutor tu = new Tutor("tes2@gmail.com","passxxx",ID);
+        Person tu = new Person("tes2@gmail.com","passxxx",ID);
         dbRef.child("Tutors").child(Integer.toString(ID)).setValue(tu);
 
         ID=10003;
-        tu = new Tutor("test3@gmail.com","passyyy",ID);
+        tu = new Person("test3@gmail.com","passyyy",ID);
         dbRef.child("Tutors").child(Integer.toString(ID)).setValue(tu);
 
     }

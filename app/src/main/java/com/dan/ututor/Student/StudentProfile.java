@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.dan.ututor.R;
 
-public class StudentProfile extends AppCompatActivity {
+public class StudentProfile extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
