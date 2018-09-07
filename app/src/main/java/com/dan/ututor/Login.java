@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.dan.ututor.Student.Student;
-import com.dan.ututor.Student.Person;
+import com.dan.ututor.System.Student;
+import com.dan.ututor.System.Person;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
