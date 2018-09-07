@@ -1,4 +1,4 @@
-package com.dan.ututor.Student;
+package com.dan.ututor.MainPackage;
 
 public class Requesting {
     /*

@@ -1,4 +1,4 @@
-package com.dan.ututor.Student;
+package com.dan.ututor.MainPackage;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
