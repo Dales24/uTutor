@@ -1,17 +1,18 @@
 package com.dan.ututor.Queries;
 
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import com.dan.ututor.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import android.view.View;
 
-public class LoginQueries {
+public class LoginQueries extends AppCompatActivity {
 
     //declare DB
     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference() ;
 
-    public static void LoginStudent(View view){
+    public void LoginStudent(View view){
 
         //Retrieve data from login page and convert to string
         EditText rawEmail = findViewById(R.id.emailInput);

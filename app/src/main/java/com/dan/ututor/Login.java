@@ -13,9 +13,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
 
-    //declare DB
-    DatabaseReference dbRef;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
