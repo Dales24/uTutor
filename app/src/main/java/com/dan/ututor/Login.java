@@ -3,10 +3,11 @@ package com.dan.ututor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import com.dan.ututor.Queries.LoginQueries;
 
-import com.dan.ututor.System.Student;
-import com.dan.ututor.System.Person;
+import com.dan.ututor.Queries.LoginQueries;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,32 +24,20 @@ public class Login extends AppCompatActivity {
 
     public void loginClicked(View view){
 
-        //Retrieve data from login page and convert to strings
-        EditText rawPass = findViewById(R.id.passwordInput);
-        String stringPass = rawPass.getText().toString();
+        //Retrieve login type from radio buttons
 
-        EditText rawEmail = findViewById(R.id.emailInput);
-        String stringEmail = rawEmail.getText().toString();
+        String personType="";
+        CompoundButton studentRadio =  findViewById(R.id.radioStudent);
+        CompoundButton tutorRadio =  findViewById(R.id.radioTutor);
 
-        //init DB
-        dbRef = FirebaseDatabase.getInstance().getReference();
-
-        //execute insertion of new user
-        int ID=10000;
-        Student st = new Student("test@gmail.com","pass1234",ID);
-        dbRef.child("Students").child(Integer.toString(ID)).setValue(st);
-
-        ID=10001;
-        st = new Student("test1@gmail.com","pass9999",ID);
-        dbRef.child("Students").child(Integer.toString(ID)).setValue(st);
-
-        ID=10002;
-        Person tu = new Person("tes2@gmail.com","passxxx",ID);
-        dbRef.child("Tutors").child(Integer.toString(ID)).setValue(tu);
-
-        ID=10003;
-        tu = new Person("test3@gmail.com","passyyy",ID);
-        dbRef.child("Tutors").child(Integer.toString(ID)).setValue(tu);
+        if(studentRadio.isChecked())
+        {
+            LoginQueries.LoginStudent(view);
+        }
+        else if(tutorRadio.isChecked())
+        {
+            LoginQueries.LoginTutor(view);
+        }
 
     }
 }
