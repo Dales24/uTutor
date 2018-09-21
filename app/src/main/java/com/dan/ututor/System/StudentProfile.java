@@ -32,6 +32,7 @@ public class StudentProfile extends AppCompatActivity{
                 boolean handled = false;
                 if (i == EditorInfo.IME_ACTION_NEXT) {
                     String inputText = textView.getText().toString();
+                    person.setFirstName(inputText);
                     Toast.makeText(MainActivity.this, "First Name:" + inputText, Toast.LENGTH_SHORT).show();
                     InputMethodManager inputMethod = (InputMethodManager)
                             getSystemService(Context.INPUT_METHOD_SERVICE);

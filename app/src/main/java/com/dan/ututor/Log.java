@@ -49,9 +49,8 @@ public class Log extends AppCompatActivity {
         ID=10003;
         tu = new Person("test3@gmail.com","passyyy",ID);
         dbRef.child("Tutors").child(Integer.toString(ID)).setValue(tu);
-
+// we need to get all the stored info in person class
 // writing to the database
-        
         private void writeNewUser(int age, String school, String firstName, String lastName, String location,
                 String description,double gpa, int rating,boolean online, String email, String password) {
             Person person = new Person(age, school, email, lastName, location, description, gpa, rating, online, password);
