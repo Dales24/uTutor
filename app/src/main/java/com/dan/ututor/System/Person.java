@@ -1,5 +1,7 @@
 package com.dan.ututor.System;
 
+import android.media.Rating;
+
 public class Person {
 
         private String email;
@@ -31,6 +33,24 @@ public Person(String email, String password, String school, int age, String firs
     this.gpa=gpa;
 
 }
+// resetting email and password
+    public Person(String email, String password) {
+        this.email = email;
+        this.password = password;
+        }
+
+// updating user rating from others
+public Person(int rating){
+          this.rating=rating;
+}
+
+//setting online status
+    public Person(boolean online){
+        this.online=online;
+    }
+
+
+
         public Person(String email, String password, int ID) {
             this.email = email;
             this.password = password;
@@ -95,12 +115,31 @@ public Person(String email, String password, String school, int age, String firs
        }
 
 
-
-    private void writeNewUser(int age, String school, String firstName, Strign lastName, String location,
+// writing to the database
+    private void writeNewUser(int age, String school, String firstName, String lastName, String location,
                               String description,double gpa, int rating,boolean online, String email, String password) {
         Person person = new Person(age, school, email, lastName, location, description, gpa, rating, online, password);
         mDatabase.child("person").child(userId).setValue(user);
     }
+    //update user profile
+    private void updateUserEmail(int age, String school, String firstName, String lastName, String location,
+                                 String description,double gpa, String email, String password) {
+
+    }
+    //update user profile rating
+    private void updateUserRating(int rating) {
+
+    }
+
+    //update user profile status
+    private void updateUserStatus(int online) {
+
+    }
+    //resetting a user email
+    private void updateUserEmail(String email, String password) {
+
+    }
+
 }
 
 
