@@ -24,26 +24,15 @@ public class StudentProfile extends AppCompatActivity{
         editFirstName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
 
-        public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent){
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
 
-            boolean handled= false;
-            if(i == EditorInfo.IME_ACTION_NEXT) {
-                String inputText = textView.getText().toString();
-                Toast.makeText(MainActivity.this,"First Name:" + inputText, Toast.LENGTH_SHORT).show();
+                boolean handled = false;
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    String inputText = textView.getText().toString();
+                    Toast.makeText(MainActivity.this, "First Name:" + inputText, Toast.LENGTH_SHORT).show();
 
-            }
-            }
-        }
-
-
-
-
-        private void writeNewUser(int age, String school, String firstName, Strign lastName, String location,
-                String description,double gpa, int rating,boolean online, String email, String password) {
-            Person person = new Person(age, school, email, lastName, location, description, gpa, rating, online, password);
-            mDatabase.child("person").child(userId).setValue(user);
-        }
+                }}}}}
 // one for online and location,setting and reseting email
         //when other adds rating, when reset the profile
-    }
-}
+
+

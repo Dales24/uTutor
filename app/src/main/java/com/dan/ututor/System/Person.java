@@ -93,6 +93,14 @@ public Person(String email, String password, String school, int age, String firs
        public int getID() {
           return id;
        }
+
+
+
+    private void writeNewUser(int age, String school, String firstName, Strign lastName, String location,
+                              String description,double gpa, int rating,boolean online, String email, String password) {
+        Person person = new Person(age, school, email, lastName, location, description, gpa, rating, online, password);
+        mDatabase.child("person").child(userId).setValue(user);
+    }
 }
 
 
