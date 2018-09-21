@@ -16,7 +16,8 @@ public class Searching {
    /* if(dropdown menu == subname){
        filter through tutors in that sub
        order by map
-
+  select statement from the database
+  // we need to figure out location implementatiokn here
 
     }
    */
