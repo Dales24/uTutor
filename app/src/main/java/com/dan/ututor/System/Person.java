@@ -4,7 +4,7 @@ public class Person {
 
         private String email;
         private String password;
-      //  private int id;
+       private int id;
         private String school;
         private int age;
         private String firstName;
@@ -17,16 +17,25 @@ public class Person {
         public Person() {
             // Default constructor required for calls to DataSnapshot.getValue(User.class)
         }
+        //constructor for setting up profile info
+public Person(String email, String password, String school, int age, String firstName,String lastName,
+              String location, String description, double gpa){
+    this.email=email;
+    this.password=password;
+    this.school=school;
+    this.age=age;
+    this.firstName= firstName;
+    this.lastName=lastName;
+    this.location=location;
+    this.description=description;
+    this.gpa=gpa;
 
+}
         public Person(String email, String password, int ID) {
             this.email = email;
             this.password = password;
-    //        this.id=id;
+             this.id=id;
         }
-
-    //    public int getID() {
-     //       return id;
-     //   }
 
         public int getRating(){return rating;}
 
@@ -56,7 +65,7 @@ public class Person {
 
         public String getLocation(){return location;}
 
-     //   public void setID(int id) {this.id= id;}
+        public void setID(int id) {this.id= id;}
 
         public void setEmail(String email) {this.email = email;}
 
@@ -81,9 +90,9 @@ public class Person {
         public void setOnline(boolean online){  this.online = online;}
 
 
+       public int getID() {
+          return id;
+       }
 }
-/* if(logged in){
-online=true;
-}
-*/
+
 
