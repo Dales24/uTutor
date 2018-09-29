@@ -7,106 +7,75 @@
     tools:context=".System.StudentProfile">
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/firstName"
         android:layout_width="108dp"
         android:layout_height="46dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="First Name "
+        android:hint="First Name"
         android:imeOptions="actionNext"
-        android:inputType="textFirstName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="4dp" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/lastName"
         android:layout_width="108dp"
         android:layout_height="49dp"
-        android:layout_marginLeft="204dp"
-        android:layout_marginStart="204dp"
-        android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="Last Name "
+        android:hint="Last Name"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="204dp"
+        tools:layout_editor_absoluteY="4dp" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/gpa"
         android:layout_width="90dp"
         android:layout_height="41dp"
-        android:layout_marginTop="196dp"
         android:ems="10"
         android:hint="GPA"
-        android:inputType="textPersonName"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="223dp" />
+        android:inputType="number"
+        tools:layout_editor_absoluteX="223dp"
+        tools:layout_editor_absoluteY="196dp" />
 
     <EditText
-        android:id="@+id/editText6"
-        android:layout_width="275dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="64dp"
+        android:id="@+id/school"
+        android:layout_width="165dp"
+        android:layout_height="41dp"
         android:ems="10"
         android:hint="School"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="75dp" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/location"
         android:layout_width="275dp"
         android:layout_height="52dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="116dp"
         android:ems="10"
         android:hint="Location"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="124dp" />
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="97dp"
+        android:id="@+id/age"
+        android:layout_width="109dp"
         android:layout_height="41dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="196dp"
         android:ems="10"
         android:hint="Age"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="196dp" />
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="108dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:hint="First Name "
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText"
+        android:id="@+id/description"
         android:layout_width="338dp"
         android:layout_height="77dp"
-        android:layout_marginTop="252dp"
         android:ems="10"
         android:hint="Description"
-        android:inputType="textPersonName"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="23dp" />
+        android:inputType="text"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="370dp" />
 
     <Button
         android:id="@+id/button"
@@ -116,24 +85,11 @@
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="447dp" />
 
-    <EditText
-        android:id="@+id/editText8"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="329dp" />
-
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="376dp" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
 
 </android.support.constraint.ConstraintLayout>

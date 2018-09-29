@@ -52,33 +52,5 @@ public class Log extends AppCompatActivity {
 
 
 
-
-
-
-// we need to get all the stored info in person class
-// writing and reading from the database
-        private void writeNewUser(int age, String school;, String firstName, String lastName, String location,
-                String "description",double gpa, int rating,boolean online, String "email", String "password") {
-            Person person = new Person(age, school, email, lastName, location, description, gpa, rating, online, password);
-            mDatabase.child("person").child(userId).setValue(user);
-        }
-        //update user profile
-        private void updateUserEmail(int age, String 'school', String firstName, String lastName, String location,
-                String description,double gpa, String email, String password) {
-
-        }
-        //update user profile rating
-        private void updateUserRating(int rating) {
-
-        }
-
-        //update user profile status
-        private void updateUserStatus(int online) {
-
-        }
-        //resetting a user email
-        private void updateUserEmail(String email, String password) {
-
-        }
     }
 }

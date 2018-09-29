@@ -11,7 +11,7 @@ Person person = new Person();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_profile);
+        setContentView(R.layout.activity_tutor_profile);
     }}
 
 // one for online and location,setting and resetting email

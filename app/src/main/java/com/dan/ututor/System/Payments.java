@@ -24,9 +24,9 @@ if (cardToSave == null) {
         card.validateCVC();
     }
     //needs to go into xml
- <com.stripe.android.view.CardInputWidget
-    android:id="@+id/card_input_widget"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-            />
+// <com.stripe.android.view.CardInputWidget
+//    android:id="@+id/card_input_widget"
+ //   android:layout_width="match_parent"
+ //   android:layout_height="wrap_content"
+   //         />
 }

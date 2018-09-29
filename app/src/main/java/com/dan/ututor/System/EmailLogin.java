@@ -1,7 +1,7 @@
 package com.dan.ututor.System;
 
 public class EmailLogin {
-    if(!textFeild)
+  //  if(!textFeild)
 
     {
 
@@ -15,6 +15,6 @@ public class EmailLogin {
 online=true;
 }
 */
-}
+
 // if new user need to bring you directly to profile page
 // all feilds mut be filled in or cant move on
