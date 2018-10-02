@@ -16,19 +16,18 @@ import com.dan.ututor.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import android.widget.Button;
-public class StudentProfile extends AppCompatActivity{
+public class StudentProfile extends AppCompatActivity {
 
 
     private EditText school;
     private EditText age;
-    private EditText firstName;
-    private EditText lastName;
+    private EditText name;
     private EditText location;
     private EditText description;
     private EditText gpa;
     Button save;
     FirebaseDatabase firebaseDatabase;
-   DatabaseReference databaseReference;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,53 +35,37 @@ public class StudentProfile extends AppCompatActivity{
         setContentView(R.layout.activity_student_profile);
 
 
-   firstName = (EditText) findViewById(R.id.firstName);
-   lastName = (EditText) findViewById(R.id.lastName);
-   save = (Button) findViewById(R.id.save);
+        name = (EditText) findViewById(R.id.name);
+        school = (EditText) findViewById(R.id.school);
+        age = (EditText) findViewById(R.id.age);
+        location = (EditText) findViewById(R.id.location);
+        description = (EditText) findViewById(R.id.description);
+        gpa = (EditText) findViewById(R.id.gpa);
 
-   firebaseDatabase = FirebaseDatabase.getInstance();
+        save = (Button) findViewById(R.id.save);
 
-   databaseReference= firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
-save.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
+        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
 
-        DatabaseReference mChild= databaseReference.push();
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        mChild.child("FirstName").setValue(firstName.getText().toString().trim());
-        mChild.child("LastName").setValue(firstName.getText().toString().trim());
+                DatabaseReference mChild = databaseReference.push();
+
+                mChild.child("Name").setValue(name.getText().toString().trim());
+                mChild.child("Age").setValue(age.getText().toString().trim());
+                mChild.child("Location").setValue(location.getText().toString().trim());
+                mChild.child("Description").setValue(description.getText().toString().trim());
+                mChild.child("GPA").setValue(gpa.getText().toString().trim());
+                mChild.child("School").setValue(school.getText().toString().trim());
             }
-        };
+        }
+    }
+}
 
 
 
 
 
-
-
-
-        // Resettng profile info
-        // viewing the data
-
-                //select user id and update information
-
-                // we need to get all the stored info in person class
-// writing and reading from the database
-
-                //update user profile
-
-                //update user profile rating
-
-
-                //update user profile status
-
-
-                //resetting a user email
-
-
-// one for online and location,setting and reseting email
-                //when other adds rating, when reset the profile
-
-
-            }}
