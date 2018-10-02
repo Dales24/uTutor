@@ -7,6 +7,15 @@
     tools:context=".Log"
     tools:layout_editor_absoluteY="81dp">
 
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:text="Register as Student"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="wrap_content"
@@ -35,7 +44,6 @@
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:onClick="loginClicked"
         android:text="Login"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
@@ -51,4 +59,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET PASSWORD"
+        app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
+        app:layout_constraintTop_toBottomOf="@+id/incorrectLogin" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Register as Tutor"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 </android.support.constraint.ConstraintLayout>

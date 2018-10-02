@@ -9,8 +9,8 @@ public class Person {
        private int id;
         private String school;
         private int age;
-        private String firstName;
-        private String lastName;
+        private String name;
+
         private String location;
         private String description;
         private double gpa;
@@ -26,8 +26,8 @@ public Person(String email, String password, String school, int age, String firs
     this.password=password;
     this.school=school;
     this.age=age;
-    this.firstName= firstName;
-    this.lastName=lastName;
+    this.name= name;
+
     this.location=location;
     this.description=description;
     this.gpa=gpa;
@@ -75,9 +75,8 @@ public Person(int rating){
 
         public double getGPA(){return gpa;}
 
-        public String getFirstName(){return firstName;}
+        public String getname(){return name;}
 
-        public String getLastName(){return lastName;}
 
         public String getDescription(){return description;}
 
@@ -97,9 +96,9 @@ public Person(int rating){
 
         public void setGPA(double gpa){this.gpa=gpa;}
 
-        public void setFirstName(String firstName){this.firstName=firstName;}
+        public void setname(String firstName){this.name=name;}
 
-        public void setLastName(String lastName){this.lastName=lastName;}
+
 
         public void setDescription(String description){this.description=description;}
 
