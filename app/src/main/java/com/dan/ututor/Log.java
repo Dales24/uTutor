@@ -11,7 +11,7 @@ import com.dan.ututor.Queries.LoginQueries;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Login extends AppCompatActivity {
+public class Log extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,8 @@ public class Login extends AppCompatActivity {
         {
             LoginQueries.LoginTutor(view);
         }
+
+
 
     }
 }
