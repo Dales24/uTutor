@@ -14,6 +14,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Log extends AppCompatActivity {
     Button login;
+    Button reset;
+    Button registerstudent;
+    Button registertutor;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     @Override
@@ -22,9 +25,10 @@ public class Log extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
     login = (Button) findViewById(R.id.login);
-
+        reset = (Button) findViewById(R.id.reset);
+        registerstudent = (Button) findViewById(R.id.registerstudent);
+        registertutor = (Button) findViewById(R.id.registertutor);
     firebaseDatabase = FirebaseDatabase.getInstance();
-
     databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -34,3 +38,26 @@ public class Log extends AppCompatActivity {
 
     }
 }
+            reset.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                    }}
+
+                    registerstudent.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+
+                            }
+                        }
+
+                            registertutor.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+
+                                }
+                            }
+
+
+    }}
