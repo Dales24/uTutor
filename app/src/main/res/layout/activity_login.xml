@@ -7,6 +7,38 @@
     tools:context=".Login"
     tools:layout_editor_absoluteY="81dp">
 
+    <Button
+        android:id="@+id/loginButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="72dp"
+        android:onClick="loginClicked"
+        android:text="Reset Password"
+        app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
+    <Button
+        android:id="@+id/loginButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:onClick="loginClicked"
+        android:text="Student Registration"
+        app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
+    <Button
+        android:id="@+id/loginButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:onClick="loginClicked"
+        android:text="Tutor Registration"
+        app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="wrap_content"

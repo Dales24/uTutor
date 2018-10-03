@@ -60,7 +60,7 @@ public class TutorProfile extends AppCompatActivity {
                 mChild.child("Major").setValue(major.getText().toString().trim());
             }
         }}
-    }
+}
 
 // one for online and location,setting and resetting email
 //when other adds rating, when reset the profile
