@@ -10,41 +10,6 @@
         android:layout_weight="100"
         android:visibility="visible" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="306dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="100"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="100"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="304dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="100"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="303dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="100"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="100"
-        android:text="Button" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
