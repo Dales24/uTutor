@@ -6,8 +6,8 @@ import com.stripe.android.view.CardInputWidget;
 import com.stripe.android.Stripe;
 import com.stripe.android.model.Token;
 public class Requesting {
-
-
+}
+/*
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
