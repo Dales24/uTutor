@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import com.dan.ututor.Queries.LoginQueries;
-
+import 	android.content.Intent;
 import com.dan.ututor.Queries.LoginQueries;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,19 +34,24 @@ public class Log extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+           if() {
+               Intent intent = new Intent(this,TutorHome.class);
+           }
+           else
 
-
+               Intent intent = new Intent(this, StudentHome.class);
     }
 }
             reset.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                    }}
+                      Intent intent = new Intent(this, Resest.class);
+                        }}
 
                     registerstudent.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-
+                                Intent intent = new Intent(this, StudentReg.class);
 
                             }
                         }
@@ -54,7 +59,7 @@ public class Log extends AppCompatActivity {
                             registertutor.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
+                                    Intent intent = new Intent(this, TutorReg.class);
 
                                 }
                             }
