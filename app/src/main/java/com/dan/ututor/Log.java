@@ -40,19 +40,21 @@ public class Log extends AppCompatActivity {
            else
 
                Intent intent = new Intent(this, StudentHome.class);
+
     }
 }
             reset.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                      Intent intent = new Intent(this, Resest.class);
+                      Intent intent = new Intent(this, Reset.class);
+                      startActivity(intent);
                         }}
 
                     registerstudent.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 Intent intent = new Intent(this, StudentReg.class);
-
+                                startActivity(intent);
                             }
                         }
 
@@ -60,7 +62,7 @@ public class Log extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
                                     Intent intent = new Intent(this, TutorReg.class);
-
+                                    startActivity(intent);
                                 }
                             }
 
