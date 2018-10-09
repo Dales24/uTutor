@@ -50,7 +50,7 @@ public class TutorProfile extends AppCompatActivity {
             public void onClick(View v) {
 
                 DatabaseReference mChild = databaseReference.push();
-
+// need to create major option button
                 mChild.child("Name").setValue(name.getText().toString().trim());
                 mChild.child("Age").setValue(age.getText().toString().trim());
                 mChild.child("Location").setValue(location.getText().toString().trim());

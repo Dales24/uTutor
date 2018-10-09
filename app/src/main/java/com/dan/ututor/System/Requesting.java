@@ -7,6 +7,9 @@ import com.stripe.android.Stripe;
 import com.stripe.android.model.Token;
 public class Requesting {
 }
+
+
+// need to figure out which librarys are avalaible
 /*
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

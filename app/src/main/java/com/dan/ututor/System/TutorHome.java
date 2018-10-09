@@ -31,7 +31,7 @@ public class TutorHome {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String value  = dataSnapshot.getValue(String.class);
-                       
+// need conditions
             }
 
             @Override
@@ -62,6 +62,7 @@ public int getCount(){
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             return null;
+            // need conditions
         }
     }}
     // display interface

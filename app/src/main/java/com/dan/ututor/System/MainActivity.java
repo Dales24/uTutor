@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.di);
             di= (DrawerLayout)findViewById(R.id.di);
+            // need to figure out which librarys are avalaible  missing a class toggle
         }
 
 
