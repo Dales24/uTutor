@@ -42,7 +42,7 @@ public class TutorReg {
 
             firebaseDatabase = FirebaseDatabase.getInstance();
 
-            databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutor");
+            databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutors");
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override

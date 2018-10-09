@@ -30,7 +30,7 @@ public class StudentProfile extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
+        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Students");
 // mock need variables to replace tis
         try {
             databaseReference.child("myDb").child("awais@gmailcom").child("leftSpace").setValue("YourDateHere");

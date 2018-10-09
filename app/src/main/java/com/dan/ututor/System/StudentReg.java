@@ -39,7 +39,7 @@ public class StudentReg {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Student");
+        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Students");
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
