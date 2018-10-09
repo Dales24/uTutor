@@ -34,6 +34,8 @@ public class Log extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+         // need verification condition
+
            if() {
                Intent intent = new Intent(this,TutorHome.class);
            }

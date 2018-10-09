@@ -42,7 +42,7 @@ public class TutorReg {
 
             firebaseDatabase = FirebaseDatabase.getInstance();
 
-            databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
+            databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutor");
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -57,11 +57,11 @@ public class TutorReg {
                     mChild.child("GPA").setValue(gpa.getText().toString().trim());
                     mChild.child("School").setValue(school.getText().toString().trim());
                     mChild.child("Major").setValue(major.getText().toString().trim());
+                    //need to send email verification
                 }
             }}}
 
 
-// one for online and location,setting and resetting email
-//when other adds rating, when re
+
 
 

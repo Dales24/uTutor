@@ -39,7 +39,7 @@ public class StudentReg {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
+        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Student");
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +53,8 @@ public class StudentReg {
                 mChild.child("Description").setValue(description.getText().toString().trim());
                 mChild.child("GPA").setValue(gpa.getText().toString().trim());
                 mChild.child("School").setValue(school.getText().toString().trim());
+
+                //need to send email verification
             }
         }
     }
