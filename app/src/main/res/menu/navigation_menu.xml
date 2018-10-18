@@ -3,28 +3,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
 >
     <item
-        android:id="profile"
+        android:id="@+id/profile"
         android:title="Profile"
         android:icon="@drawable/ic_person_black_24dp"
         >
     </item>
 
 <item
-android:id="home"
+android:id="@+id/home"
 android:title="Home"
 android:icon="@drawable/ic_home_black_24dp"
     >
 </item>
 
 <item
-android:id="settings"
+android:id="@+id/settings"
 android:title="Settings"
 android:icon="@drawable/ic_settings_black_24dp"
     >
 </item>
 
 <item
-android:id="help"
+android:id="@+id/help"
 android:title="Help"
 android:icon="@drawable/ic_help_black_24dp"
     >

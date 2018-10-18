@@ -6,7 +6,7 @@ public class Person {
 
         private String email;
         private String password;
-       private int id;
+        private int id;
         private String school;
         private int age;
         private String name;
