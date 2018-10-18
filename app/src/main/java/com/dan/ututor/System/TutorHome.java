@@ -2,6 +2,7 @@ package com.dan.ututor.System;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class TutorHome {
+public class TutorHome extends AppCompatActivity {
 
 // pass profiles from database to array
      String[] profiles;
