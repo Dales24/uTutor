@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.di);
-            di= (DrawerLayout)findViewById(R.id.di);
+            di = (DrawerLayout) findViewById(R.id.di);
             // need to figure out which librarys are avalaible  missing a class toggle
         }
 
 
-}
+    }

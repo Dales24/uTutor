@@ -16,6 +16,9 @@ import com.dan.ututor.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import android.widget.Button;
+
+import java.util.jar.Attributes;
+
 public class StudentProfile extends AppCompatActivity {
 
 
@@ -32,8 +35,15 @@ public class StudentProfile extends AppCompatActivity {
 
         databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Students");
 // mock need variables to replace tis
+
         try {
-            databaseReference.child("myDb").child("awais@gmailcom").child("leftSpace").setValue("YourDateHere");
+
+            databaseReference.child(ID).child("Name").setValue(name.getText().toString().trim());
+            databaseReference.child("Age").setValue(age.getText().toString().trim());
+            databaseReference.child("Location").setValue(location.getText().toString().trim());
+            databaseReference.child("Description").setValue(description.getText().toString().trim());
+            databaseReference.child("GPA").setValue(gpa.getText().toString().trim());
+            databaseReference.child("School").setValue(school.getText().toString().trim());
         } catch (Exception e) {
             e.printStackTrace();
         }

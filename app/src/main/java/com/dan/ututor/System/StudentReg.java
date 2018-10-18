@@ -57,7 +57,7 @@ public class StudentReg extends AppCompatActivity {
 
                 //need to send email verification
             }
-        }
+        });
     }
 }
 

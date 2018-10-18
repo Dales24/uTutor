@@ -39,7 +39,7 @@ public class TutorHome extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        })
+        });
 
 
         ListView listView = (ListView)findViewByID(R.id.listView);

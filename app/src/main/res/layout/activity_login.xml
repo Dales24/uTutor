@@ -11,9 +11,11 @@
         android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="92dp"
+        android:background="@android:color/holo_blue_bright"
         android:onClick="loginClicked"
         android:text="Reset Password"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
         app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
@@ -21,11 +23,13 @@
         android:id="@+id/registerstudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="220dp"
+        android:background="@android:color/holo_blue_bright"
         android:onClick="loginClicked"
         android:text="Student Registration"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
         app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
@@ -33,9 +37,11 @@
         android:id="@+id/registertutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="156dp"
+        android:background="@android:color/holo_blue_bright"
         android:onClick="loginClicked"
         android:text="Tutor Registration"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
         app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
@@ -67,9 +73,11 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="17dp"
+        android:background="@android:color/holo_blue_bright"
         android:onClick="loginClicked"
         android:text="Login"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
         app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
@@ -81,6 +89,7 @@
         android:textColor="#cc1520"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 </android.support.constraint.ConstraintLayout>

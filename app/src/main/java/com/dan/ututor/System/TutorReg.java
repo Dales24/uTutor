@@ -59,7 +59,7 @@ public class TutorReg extends AppCompatActivity {
                     mChild.child("Major").setValue(major.getText().toString().trim());
                     //need to send email verification
                 }
-            }}}
+            });}}
 
 
 
