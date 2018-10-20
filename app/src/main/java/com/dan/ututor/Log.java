@@ -43,13 +43,13 @@ public class Log extends AppCompatActivity {
         public void onClick(View v) {
             // need verification condition
 
-          if() {
+          if(databaseReference == firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutors")){
                Intent intent = new Intent(Log.this,TutorProfile.class);
            }
-           else
+           else {
 
-               Intent intent = new Intent(Log.this, StudentProfile.class);
-
+              Intent intent = new Intent(Log.this, StudentProfile.class);
+          }
 
         }});
             reset.setOnClickListener(new View.OnClickListener() {

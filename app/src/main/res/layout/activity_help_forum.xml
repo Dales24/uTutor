@@ -11,7 +11,6 @@
         android:layout_height="182dp"
         android:layout_weight="3"
         android:text="TextView"
-        android:textColor="@color/design_default_color_primary"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         tools:text="FOR ALL QUESTIONS EMAIL: Patrickdaley217@gmail.com" />
