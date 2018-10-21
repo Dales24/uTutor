@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">UTUTOR</string>
+    <string name="Major">Major</string>
+    <string name="Description">Description</string>
+    <string name="Email">Email</string>
+    <string name="Gpa">Gpa</string>
+    <string name="School">School</string>
+    <string name="Age">Age</string>
+    <string name="Password">Password</string>
+    <string name="Location">Location</string>
+    <string name="Name">Name</string>
+    <string name="SAVE">SAVE</string>
+    <string name="IncorrectLogin"> Incorrect Login</string>
+    <string name="Login">Login</string>
+    <string name="StudentRegistration">Student Registration</string>
+    <string name="TutorRegistration">Tutor Registration</string>
+    <string name="ResetPassword">Reset Password</string>
 </resources>
