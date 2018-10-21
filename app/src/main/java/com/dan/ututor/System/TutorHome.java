@@ -28,45 +28,7 @@ public class TutorHome extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutor");
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String value  = dataSnapshot.getValue(String.class);
-// need conditions
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-     //   ListView listView = (ListView)findViewByID(R.id.listView);
-
-    }
-
-    class CustomAdapter extends BaseAdapter{
-@Override
-public int getCount(){
-    return profiles.length;
-}
-@Override
-        public Object getItem(int i){
-    return null;
-}
-        @Override
-        public long getItemId(int i){
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            return null;
-            // need conditions
-        }
     }}
     // display interface
 
     // button clic action events
-

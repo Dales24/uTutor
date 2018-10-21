@@ -1,5 +1,6 @@
 package com.dan.ututor.System;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.dan.ututor.Log;
 import com.dan.ututor.R;
 
 public class Nav extends AppCompatActivity {
@@ -29,15 +31,30 @@ public class Nav extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                switch(item.getItemId()){
 
-                   case R.id.profile:
-                       return true;
-                   case R.id.settings:
-                       return true;
-                   case R.id.home:
-                       return true;
-                   case R.id.help:
+                   case R.id.profile:{
 
+                   Intent intent = new Intent(Nav.this, StudentProfile.class);
+                   startActivity(intent);
+                   finish();
+                       return true;}
+                   case R.id.settings: {
+                       Intent intent = new Intent(Nav.this, Settings.class);
+                       startActivity(intent);
+                       finish();
                        return true;
+                   }
+                   case R.id.home: {
+                       Intent intent = new Intent(Nav.this, Searching.class);
+                       startActivity(intent);
+                       finish();
+                       return true;
+                   }
+                   case R.id.help: {
+                       Intent intent = new Intent(Nav.this, StudentHome.class);
+                       startActivity(intent);
+                       finish();
+                       return true;
+                   }
                        default:
                            return false;
                }
