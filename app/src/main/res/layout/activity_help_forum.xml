@@ -13,5 +13,5 @@
         android:text="TextView"
         android:textSize="24sp"
         android:textStyle="bold|italic"
-        tools:text="FOR ALL QUESTIONS EMAIL: Patrickdaley217@gmail.com" />
+        tools:text="@string/question" />
 </LinearLayout>

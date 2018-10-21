@@ -15,4 +15,12 @@
     <string name="StudentRegistration">Student Registration</string>
     <string name="TutorRegistration">Tutor Registration</string>
     <string name="ResetPassword">Reset Password</string>
+    <string name="question">FOR ALL QUESTIONS EMAIL: Patrickdaley217@gmail.com</string>
+
+
+    <string name="Profile">Profile</string>
+    <string name="Help">Help</string>
+    <string name="Settings">Settings</string>
+    <string name="Tutors">Tutors</string>
 </resources>
+
