@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/passwordInput4"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/emailInput3"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="252dp"
