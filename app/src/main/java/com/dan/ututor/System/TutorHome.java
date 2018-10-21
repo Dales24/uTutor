@@ -42,7 +42,7 @@ public class TutorHome extends AppCompatActivity {
         });
 
 
-        ListView listView = (ListView)findViewByID(R.id.listView);
+     //   ListView listView = (ListView)findViewByID(R.id.listView);
 
     }
 

@@ -2,18 +2,19 @@ package com.dan.ututor.System;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-
+import com.dan.ututor.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Searching {
+public class Searching extends AppCompatActivity {
 
     public String bio="Biology";
     public String math="Math";
@@ -52,7 +53,7 @@ public class Searching {
         });
 
 
-        ListView listView = (ListView)findViewByID(R.id.listView);
+    //    ListView listView = (ListView)findViewByID(R.id.listView);
 
     }
 

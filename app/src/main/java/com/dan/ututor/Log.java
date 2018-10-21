@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import com.dan.ututor.Queries.LoginQueries;
+
 import 	android.content.Intent;
 import android.widget.Toast;
 
-import com.dan.ututor.Queries.LoginQueries;
+
 import com.dan.ututor.System.Settings;
 import com.dan.ututor.System.StudentReg;
 import com.dan.ututor.System.TutorReg;

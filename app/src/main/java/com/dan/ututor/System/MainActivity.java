@@ -7,7 +7,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout di;
-
+}
+   /*
     public class StudentHome {
 
         protected void onCreate(Bundle savedInstanceState) {
@@ -19,3 +20,4 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+*/

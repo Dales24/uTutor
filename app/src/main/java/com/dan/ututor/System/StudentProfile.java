@@ -38,12 +38,12 @@ public class StudentProfile extends AppCompatActivity {
 
         try {
 
-            databaseReference.child(ID).child("Name").setValue(name.getText().toString().trim());
-            databaseReference.child("Age").setValue(age.getText().toString().trim());
-            databaseReference.child("Location").setValue(location.getText().toString().trim());
-            databaseReference.child("Description").setValue(description.getText().toString().trim());
-            databaseReference.child("GPA").setValue(gpa.getText().toString().trim());
-            databaseReference.child("School").setValue(school.getText().toString().trim());
+   //         databaseReference.child(ID).child("Name").setValue(name.getText().toString().trim());
+       //     databaseReference.child("Age").setValue(age.getText().toString().trim());
+     //       databaseReference.child("Location").setValue(location.getText().toString().trim());
+    //        databaseReference.child("Description").setValue(description.getText().toString().trim());
+      //      databaseReference.child("GPA").setValue(gpa.getText().toString().trim());
+      //      databaseReference.child("School").setValue(school.getText().toString().trim());
         } catch (Exception e) {
             e.printStackTrace();
         }
