@@ -38,6 +38,7 @@ FirebaseAuth mAuth;
         FirebaseDatabase firebaseDatabase;
         DatabaseReference databaseReference;
 
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -54,10 +55,9 @@ FirebaseAuth mAuth;
             email = (EditText) findViewById(R.id.email);
             password = (EditText) findViewById(R.id.password);
             save = (Button) findViewById(R.id.save);
-
             firebaseDatabase = FirebaseDatabase.getInstance();
 
-            databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutors");
+           databaseReference = firebaseDatabase.getReference().child("Tutors");
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -65,18 +65,20 @@ FirebaseAuth mAuth;
 
                     if(name!= null | email!= null | password!= null) {
                         DatabaseReference mChild = databaseReference.push();
+                        String id  = databaseReference.getKey();
 // need to create major option button
-                        mChild.child("Name").setValue(name.getText().toString().trim());
-                        mChild.child("Age").setValue(age.getText().toString().trim());
-                        mChild.child("Location").setValue(location.getText().toString().trim());
-                        mChild.child("Description").setValue(description.getText().toString().trim());
-                        mChild.child("GPA").setValue(gpa.getText().toString().trim());
-                        mChild.child("School").setValue(school.getText().toString().trim());
-                        mChild.child("Major").setValue(major.getText().toString().trim());
-                        mChild.child("Password").setValue(password.getText().toString().trim());
-                        mChild.child("Email").setValue(email.getText().toString().trim());
-                        sendEmailVerification();
-
+                       mChild.child(id).child("Name").setValue(name.getText().toString().trim());
+                        mChild.child(id).child("Age").setValue(age.getText().toString().trim());
+                     mChild.child(id).child("Location").setValue(location.getText().toString().trim());
+                   mChild.child(id).child("Description").setValue(description.getText().toString().trim());
+                        mChild.child(id).child("GPA").setValue(gpa.getText().toString().trim());
+                        mChild.child(id).child("School").setValue(school.getText().toString().trim());
+                        mChild.child(id).child("Major").setValue(major.getText().toString().trim());
+                       mChild.child(id).child("Password").setValue(password.getText().toString().trim());
+                        mChild.child(id).child("Email").setValue(email.getText().toString().trim());
+                      //  sendEmailVerification();
+                        Intent intent = new Intent(TutorReg.this, Log.class);
+                        startActivity(intent);
                     }
                 }
             });

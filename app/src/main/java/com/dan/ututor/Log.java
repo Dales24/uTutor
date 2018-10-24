@@ -42,14 +42,18 @@ public class Log extends AppCompatActivity {
         registerstudent = (Button) findViewById(R.id.registerstudent);
         registertutor = (Button) findViewById(R.id.registertutor);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
+     //   firebaseDatabase = FirebaseDatabase.getInstance();
+      //  databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // need verification condition
-                    verifyEmail();
+
+                Intent intent = new Intent(Log.this, TutorProfile.class);
+                startActivity(intent);
+                finish();
+                   // verifyEmail();
 
             }
         });
@@ -84,17 +88,20 @@ public class Log extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         emailCheck = user.isEmailVerified();
         if(emailCheck==true){
-            if (databaseReference == firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutors")) {
 
                 Intent intent = new Intent(Log.this, TutorProfile.class);
-                finish();
-            } else {
-                verifyEmail();
-                Intent intent = new Intent(Log.this, StudentProfile.class);
+                startActivity(intent);
                 finish();
             }
+            /*
+            else {
+                verifyEmail();
+                Intent intent = new Intent(Log.this, StudentProfile.class);
+                startActivity(intent);
+                finish();
+            }
+*/
 
-        }
 else{
             Toast.makeText(this,"Please Verify Account",Toast.LENGTH_SHORT).show();
             mAuth.signOut();

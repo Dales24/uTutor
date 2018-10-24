@@ -24,7 +24,7 @@ public class TutorProfile extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutors");
+        databaseReference = firebaseDatabase.getReference("Tutor");
 
         try {
             //         databaseReference.child(ID).child("Name").setValue(name.getText().toString().trim());
