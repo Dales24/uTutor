@@ -7,89 +7,96 @@
     tools:context=".Login"
     tools:layout_editor_absoluteY="81dp">
 
-    <Button
-        android:id="@+id/reset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:background="@android:color/holo_blue_bright"
-        android:onClick="loginClicked"
-        android:text="@string/ResetPassword"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
-    <Button
-        android:id="@+id/registerstudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
-        android:background="@android:color/holo_blue_bright"
-        android:onClick="loginClicked"
-        android:text="@string/StudentRegistration"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
-    <Button
-        android:id="@+id/registertutor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
-        android:background="@android:color/holo_blue_bright"
-        android:onClick="loginClicked"
-        android:text="@string/TutorRegistration"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
-    <EditText
-        android:id="@+id/emailInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:ems="10"
-        android:hint="@string/Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/registertutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="156dp"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="loginClicked"
+            android:text="@string/TutorRegistration"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
+            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
-    <EditText
-        android:id="@+id/passwordInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/Password"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/emailInput"
-        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="loginClicked"
+            android:text="@string/ResetPassword"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
+            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:background="@android:color/holo_blue_bright"
-        android:onClick="loginClicked"
-        android:text="@string/Login"
-        android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:ems="10"
+            android:hint="@string/Email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/incorrectLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/IncorrectLogin"
-        android:textColor="#cc1520"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="parent"
-       />
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="@string/Password"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="@+id/emailInput"
+            app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="loginClicked"
+            android:text="@string/Login"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
+            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
+        <Button
+            android:id="@+id/registerstudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="loginClicked"
+            android:text="@string/StudentRegistration"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
+            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
+        <TextView
+            android:id="@+id/incorrectLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/IncorrectLogin"
+            android:textColor="#cc1520"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.41"
+            app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
+

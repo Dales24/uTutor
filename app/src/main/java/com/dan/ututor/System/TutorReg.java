@@ -55,31 +55,34 @@ FirebaseAuth mAuth;
             email = (EditText) findViewById(R.id.email);
             password = (EditText) findViewById(R.id.password);
             save = (Button) findViewById(R.id.save);
-            firebaseDatabase = FirebaseDatabase.getInstance();
+    //        firebaseDatabase = FirebaseDatabase.getInstance();
 
-           databaseReference = firebaseDatabase.getReference().child("Tutors");
+            databaseReference = firebaseDatabase.getInstance().getReference().child("Tutors");
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    if(name!= null | email!= null | password!= null) {
+              //      if(name!= null | email!= null | password!= null) {
                         DatabaseReference mChild = databaseReference.push();
                         String id  = databaseReference.getKey();
 // need to create major option button
-                       mChild.child(id).child("Name").setValue(name.getText().toString().trim());
-                        mChild.child(id).child("Age").setValue(age.getText().toString().trim());
-                     mChild.child(id).child("Location").setValue(location.getText().toString().trim());
-                   mChild.child(id).child("Description").setValue(description.getText().toString().trim());
-                        mChild.child(id).child("GPA").setValue(gpa.getText().toString().trim());
-                        mChild.child(id).child("School").setValue(school.getText().toString().trim());
-                        mChild.child(id).child("Major").setValue(major.getText().toString().trim());
-                       mChild.child(id).child("Password").setValue(password.getText().toString().trim());
-                        mChild.child(id).child("Email").setValue(email.getText().toString().trim());
-                      //  sendEmailVerification();
-                        Intent intent = new Intent(TutorReg.this, Log.class);
-                        startActivity(intent);
-                    }
+                        mChild.child("Name").setValue(name.getText().toString().trim());
+                        mChild.child("Age").setValue(age.getText().toString().trim());
+                        mChild.child("Location").setValue(location.getText().toString().trim());
+                    mChild.child("Password").setValue(password.getText().toString().trim());
+                    mChild.child("Email").setValue(email.getText().toString().trim());
+                        mChild.child("Description").setValue(description.getText().toString().trim());
+                        mChild.child("GPA").setValue(gpa.getText().toString().trim());
+                        mChild.child("School").setValue(school.getText().toString().trim());
+
+
+                          sendEmailVerification();
+
+                 //   }
+                 //   else {
+                   //     Toast.makeText(this,"Error:" +error,Toast.LENGTH_SHORT).show();
+                //    }
                 }
             });
         }
@@ -91,29 +94,29 @@ FirebaseAuth mAuth;
 
 
         private void sendEmailVerification (){
-            FirebaseUser user = mAuth.getCurrentUser();
-            if(user != null) {
-                user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            FirebaseUser user = auth.getCurrentUser();
+            if(user != null){
+   user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseAuth.getInstance().signOut();
+                            //  Toast.makeText(this,"Successful, verify account",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(TutorReg.this, Log.class);
+                            startActivity(intent);
+                            mAuth.signOut();
+                        } else {
+                            String error = task.getException().getMessage();
+                            //  Toast.makeText(this,"Error:" +error,Toast.LENGTH_SHORT).show();
+                            mAuth.signOut();
+                        }
+                    }
 
-
-if(task.isSuccessful()){
-  //  Toast.makeText(this,"Successful, verify account",Toast.LENGTH_SHORT).show();
-    sendUserToLogin();
-    mAuth.signOut();
-}
-else{
-    String error= task.getException().getMessage();
-  //  Toast.makeText(this,"Error:" +error,Toast.LENGTH_SHORT).show();
-    mAuth.signOut();
-}
-
-
-            }
             });
             }
-        }}
+            }
+        }
 
 
 
