@@ -23,5 +23,18 @@
     <string name="Settings">Settings</string>
     <string name="Tutors">Tutors</string>
     <string name="uTutor">app_name</string>
+
+    <string-array name="Major">
+        <item>Biology</item>
+        <item>Math</item>
+        <item>Nursing</item>
+        <item>Communications</item>
+        <item>Criminal Justice</item>
+        <item>Computer Science</item>
+        <item>Sports Science</item>
+        <item>History</item>
+        <item>English</item>
+
+    </string-array>
 </resources>
 
