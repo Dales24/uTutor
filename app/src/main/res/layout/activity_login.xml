@@ -8,25 +8,22 @@
     tools:layout_editor_absoluteY="81dp">
 
 
-
-
         <Button
             android:id="@+id/registertutor"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
+            android:layout_height="56dp"
             android:background="@android:color/holo_blue_bright"
             android:onClick="loginClicked"
             android:text="@string/TutorRegistration"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+            tools:layout_editor_absoluteX="119dp"
+            tools:layout_editor_absoluteY="303dp" />
 
         <Button
             android:id="@+id/reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="172dp"
             android:background="@android:color/holo_blue_bright"
             android:onClick="loginClicked"
             android:text="@string/ResetPassword"
@@ -78,7 +75,7 @@
             android:id="@+id/registerstudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="220dp"
+            android:layout_marginTop="64dp"
             android:background="@android:color/holo_blue_bright"
             android:onClick="loginClicked"
             android:text="@string/StudentRegistration"

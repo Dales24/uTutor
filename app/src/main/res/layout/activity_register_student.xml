@@ -6,29 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".System.StudentProfile">
 
+
     <EditText
-        android:id="@+id/passwordInput4"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="296dp"
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/save"
-        app:layout_constraintStart_toStartOf="@+id/emailInput3"
+
+        app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/emailInput3"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="304dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="248dp"
         android:ems="10"
         android:hint="@string/Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,9 +36,9 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="208dp"
         android:ems="10"
         android:hint="@string/Description"
         android:inputType="text|textMultiLine"
@@ -47,11 +47,11 @@
 
     <EditText
         android:id="@+id/age"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="141dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginLeft="216dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="@string/Age"
         android:inputType="number|numberDecimal"
@@ -60,11 +60,11 @@
 
     <EditText
         android:id="@+id/gpa"
-        android:layout_width="wrap_content"
+        android:layout_width="137dp"
         android:layout_height="44dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginLeft="228dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:hint="@string/Gpa"
         android:inputType="number|numberDecimal"
@@ -75,9 +75,9 @@
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="152dp"
         android:ems="10"
         android:hint="@string/Location"
         android:inputType="text"
@@ -88,9 +88,9 @@
         android:id="@+id/school"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:hint="@string/School"
         android:inputType="text|textPersonName"
@@ -99,12 +99,12 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="347dp"
-        android:layout_marginLeft="28dp"
+        android:layout_width="152dp"
+        android:layout_height="47dp"
         android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
         android:layout_marginTop="36dp"
+        android:layout_marginBottom="347dp"
         android:ems="10"
         android:hint="@string/Name"
         android:inputType="textPersonName"
@@ -115,13 +115,14 @@
     <Button
         android:id="@+id/save"
         android:layout_width="326dp"
-        android:layout_height="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
         android:layout_marginBottom="34dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
         android:text="@string/SAVE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput4" />
+
+        />
 
 </android.support.constraint.ConstraintLayout>
