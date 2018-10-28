@@ -108,8 +108,9 @@ FirebaseAuth mAuth;
                             startActivity(intent);
                             mAuth.signOut();
                         } else {
+
                             String error = task.getException().getMessage();
-                            //  Toast.makeText(this,"Error:" +error,Toast.LENGTH_SHORT).show();
+                          //    Toast.makeText(this,"Error:" +error,Toast.LENGTH_SHORT).show();
                             mAuth.signOut();
                         }
                     }

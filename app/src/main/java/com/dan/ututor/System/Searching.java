@@ -28,8 +28,6 @@ public class Searching extends AppCompatActivity {
 
 
 
-    String[] profiles;
-
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +35,9 @@ public class Searching extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutor");
-
+        databaseReference = firebaseDatabase.getReference();
+    }}
+/*
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -55,8 +54,8 @@ public class Searching extends AppCompatActivity {
 
     //    ListView listView = (ListView)findViewByID(R.id.listView);
 
-    }
-
+    }}
+/*
     class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount(){
