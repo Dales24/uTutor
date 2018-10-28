@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class TutorReg extends AppCompatActivity {
@@ -31,7 +32,7 @@ FirebaseAuth mAuth;
         private EditText location;
         private EditText description;
         private EditText gpa;
-        private EditText major;
+        private Spinner major;
         private EditText password;
         private EditText email;
         Button save;
@@ -51,7 +52,7 @@ FirebaseAuth mAuth;
             location = (EditText) findViewById(R.id.location);
             description = (EditText) findViewById(R.id.description);
             gpa = (EditText) findViewById(R.id.gpa);
-            major = (EditText) findViewById(R.id.major);
+            major = (Spinner) findViewById(R.id.spinner1);
             email = (EditText) findViewById(R.id.email);
             password = (EditText) findViewById(R.id.password);
             save = (Button) findViewById(R.id.save);
@@ -75,7 +76,7 @@ FirebaseAuth mAuth;
                         mChild.child("Description").setValue(description.getText().toString().trim());
                         mChild.child("GPA").setValue(gpa.getText().toString().trim());
                         mChild.child("School").setValue(school.getText().toString().trim());
-
+                    mChild.child("Major").setValue(major.getSelectedItem().toString());
 
                           sendEmailVerification();
 
