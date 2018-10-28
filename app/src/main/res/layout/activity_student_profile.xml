@@ -14,7 +14,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="360dp"
         android:ems="10"
-        android:hint="Description"
+        android:hint="@string/Description"
         android:inputType="text|textMultiLine"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="104dp"
         android:ems="10"
-        android:hint="Age"
+        android:hint="@string/Age"
         android:inputType="number|numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="232dp"
         android:ems="10"
-        android:hint="GPA"
+        android:hint="@string/Gpa"
         android:inputType="number|numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="296dp"
         android:ems="10"
-        android:hint="Location"
+        android:hint="@string/Location"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +66,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="168dp"
         android:ems="10"
-        android:hint="School"
+        android:hint="@string/School"
         android:inputType="text|textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -80,7 +80,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="36dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/save"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
         android:layout_marginBottom="33dp"
         android:layout_marginLeft="40dp"
         android:layout_marginStart="40dp"
-        android:text="SAVE"
+        android:text="@string/SAVE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />

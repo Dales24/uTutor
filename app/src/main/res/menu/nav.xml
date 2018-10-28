@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/profile"
+        android:title="@string/Profile"
+        android:icon="@drawable/ic_person_black_24dp"
+        >
+    </item>
+
+    <item
+        android:id="@+id/home"
+        android:title="@string/Tutors"
+        android:icon="@drawable/ic_home_black_24dp"
+        >
+    </item>
+
+    <item
+        android:id="@+id/settings"
+        android:title="@string/Settings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        >
+    </item>
+
+    <item
+        android:id="@+id/help"
+        android:title="@string/Help"
+        android:icon="@drawable/ic_help_black_24dp"
+        >
+    </item>
+</menu>

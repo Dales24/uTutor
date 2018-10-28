@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">UTUTOR</string>
+    <string name="Major">Major</string>
+    <string name="Description">Description</string>
+    <string name="Email">Email</string>
+    <string name="Gpa">Gpa</string>
+    <string name="School">School</string>
+    <string name="Age">Age</string>
+    <string name="Password">Password</string>
+    <string name="Location">Location</string>
+    <string name="Name">Name</string>
+    <string name="SAVE">SAVE</string>
+    <string name="IncorrectLogin"> Incorrect Login</string>
+    <string name="Login">Login</string>
+    <string name="StudentRegistration">Student Registration</string>
+    <string name="TutorRegistration">Tutor Registration</string>
+    <string name="ResetPassword">Reset Password</string>
+    <string name="question">FOR ALL QUESTIONS EMAIL: Patrickdaley217@gmail.com</string>
+    <string name="path">https://capstone-71d9c.firebaseio.com/Tutors</string>
+
+    <string name="Profile">Profile</string>
+    <string name="Help">Help</string>
+    <string name="Settings">Settings</string>
+    <string name="Tutors">Tutors</string>
+    <string name="uTutor">app_name</string>
+
+    <string-array name="Major">
+        <item>Biology</item>
+        <item>Math</item>
+        <item>Nursing</item>
+        <item>Communications</item>
+        <item>Criminal Justice</item>
+        <item>Computer Science</item>
+        <item>Sports Science</item>
+        <item>History</item>
+        <item>English</item>
+
+    </string-array>
 </resources>
+

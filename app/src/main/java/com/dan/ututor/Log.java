@@ -6,67 +6,104 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import com.dan.ututor.Queries.LoginQueries;
+
 import 	android.content.Intent;
-import com.dan.ututor.Queries.LoginQueries;
+import android.widget.Toast;
+
+
+import com.dan.ututor.System.Settings;
+import com.dan.ututor.System.StudentReg;
+import com.dan.ututor.System.TutorReg;
+import com.dan.ututor.System.StudentProfile;
+import com.dan.ututor.System.TutorProfile;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Log extends AppCompatActivity {
+
     Button login;
     Button reset;
     Button registerstudent;
     Button registertutor;
+    FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    private Boolean emailCheck;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-    login = (Button) findViewById(R.id.login);
+        mAuth = FirebaseAuth.getInstance();
+        login = (Button) findViewById(R.id.login);
         reset = (Button) findViewById(R.id.reset);
         registerstudent = (Button) findViewById(R.id.registerstudent);
         registertutor = (Button) findViewById(R.id.registertutor);
-    firebaseDatabase = FirebaseDatabase.getInstance();
-    databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
+
+     //   firebaseDatabase = FirebaseDatabase.getInstance();
+      //  databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/");
 
         login.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-         // need verification condition
+            @Override
+            public void onClick(View v) {
+                // need verification condition
 
-           if() {
-               Intent intent = new Intent(this,TutorHome.class);
-           }
-           else
+                Intent intent = new Intent(Log.this, TutorProfile.class);
+                startActivity(intent);
+                finish();
+                   // verifyEmail();
 
-               Intent intent = new Intent(this, StudentHome.class);
+            }
+        });
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Log.this, Settings.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
+        registerstudent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Log.this, StudentReg.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        registertutor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Log.this, TutorReg.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
-}
-            reset.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                      Intent intent = new Intent(this, Reset.class);
-                      startActivity(intent);
-                        }}
+    private void verifyEmail(){
+        FirebaseUser user = mAuth.getCurrentUser();
+        emailCheck = user.isEmailVerified();
+        if(emailCheck==true){
 
-                    registerstudent.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(this, StudentReg.class);
-                                startActivity(intent);
-                            }
-                        }
+                Intent intent = new Intent(Log.this, TutorProfile.class);
+                startActivity(intent);
+                finish();
+            }
+            /*
+            else {
+                verifyEmail();
+                Intent intent = new Intent(Log.this, StudentProfile.class);
+                startActivity(intent);
+                finish();
+            }
+*/
 
-                            registertutor.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent intent = new Intent(this, TutorReg.class);
-                                    startActivity(intent);
-                                }
-                            }
-
-
+else{
+            Toast.makeText(this,"Please Verify Account",Toast.LENGTH_SHORT).show();
+            mAuth.signOut();
+        }
     }}

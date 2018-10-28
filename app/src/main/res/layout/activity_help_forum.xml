@@ -9,7 +9,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="182dp"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:text="TextView"
-        tools:text="FOR ALL QUESTIONS EMAIL: " />
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        tools:text="@string/question" />
 </LinearLayout>

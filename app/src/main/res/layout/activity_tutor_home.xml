@@ -18,11 +18,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
-    
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android: id ="@+id/listView">
-    </ListView>
+
+
 
 </LinearLayout>
