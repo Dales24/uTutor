@@ -3,8 +3,9 @@ package com.dan.ututor.System;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.dan.ututor.Log;
+
 import com.dan.ututor.R;
+import android.util.Log;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -67,7 +68,7 @@ FirebaseAuth mAuth;
               //      if(name!= null | email!= null | password!= null) {
                         DatabaseReference mChild = databaseReference.push();
                         String id  = databaseReference.getKey();
-// need to create major option button
+             // need to create major option button
                         mChild.child("Name").setValue(name.getText().toString().trim());
                         mChild.child("Age").setValue(age.getText().toString().trim());
                         mChild.child("Location").setValue(location.getText().toString().trim());
@@ -91,6 +92,7 @@ FirebaseAuth mAuth;
                 Intent intent = new Intent(TutorReg.this, Log.class);
                 startActivity(intent);
                 finish();
+
             }
 
 
@@ -98,6 +100,7 @@ FirebaseAuth mAuth;
             FirebaseAuth auth = FirebaseAuth.getInstance();
             FirebaseUser user = auth.getCurrentUser();
             if(user != null){
+                
    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -107,6 +110,7 @@ FirebaseAuth mAuth;
                             Intent intent = new Intent(TutorReg.this, Log.class);
                             startActivity(intent);
                             mAuth.signOut();
+
                         } else {
 
                             String error = task.getException().getMessage();
