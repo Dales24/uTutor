@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.dan.ututor.R;
 import android.util.Log;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +25,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class TutorReg extends AppCompatActivity {
+
+
 
     //    Person person = new Person();
 FirebaseAuth mAuth;
@@ -59,6 +62,8 @@ FirebaseAuth mAuth;
             save = (Button) findViewById(R.id.save);
     //        firebaseDatabase = FirebaseDatabase.getInstance();
 
+
+
             databaseReference = firebaseDatabase.getInstance().getReference().child("Tutors");
 
             save.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +83,6 @@ FirebaseAuth mAuth;
                         mChild.child("GPA").setValue(gpa.getText().toString().trim());
                         mChild.child("School").setValue(school.getText().toString().trim());
                     mChild.child("Major").setValue(major.getSelectedItem().toString());
-
                           sendEmailVerification();
 
                  //   }
@@ -97,24 +101,24 @@ FirebaseAuth mAuth;
 
 
         private void sendEmailVerification (){
+            String email2 = email.getText().toString();
+            String password2 = password.getText().toString();
+            mAuth.createUserWithEmailAndPassword(email2, password2);
             FirebaseAuth auth = FirebaseAuth.getInstance();
             FirebaseUser user = auth.getCurrentUser();
             if(user != null){
-                
+
    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            FirebaseAuth.getInstance().signOut();
-                            //  Toast.makeText(this,"Successful, verify account",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(TutorReg.this, Log.class);
-                            startActivity(intent);
-                            mAuth.signOut();
+                            sendUserToLogin();
+
 
                         } else {
 
                             String error = task.getException().getMessage();
-                          //    Toast.makeText(this,"Error:" +error,Toast.LENGTH_SHORT).show();
+
                             mAuth.signOut();
                         }
                     }

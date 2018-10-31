@@ -26,7 +26,7 @@ public class Searching extends AppCompatActivity {
     public String English="English";
     public String history="History";
 
-
+    ListView listView;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -36,6 +36,12 @@ public class Searching extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+
+
+
+
+
+        listView = findViewById(R.id.listView);
     }}
 /*
         databaseReference.addValueEventListener(new ValueEventListener() {
