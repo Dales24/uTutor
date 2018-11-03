@@ -38,15 +38,17 @@ public class Searching extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference  = firebaseDatabase.getReference();
 
-        listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.listView);}}
 
+/*
+        private void showData() {
 
-        private void showData(DataSnapshot ds) {
+            databaseReference = firebaseDatabase.getInstance().getReference().child("Tutors");
        Person uInfo = new Person();
-            uInfo.setName(ds.child().child("Name").getValue(Person.class).getName());
-            uInfo.setDescription(ds.child().child("Description").getValue(Person.class).getDescription());
-            uInfo.setLocation(ds.child().child("Location").getValue(Person.class).getLocation());
-            uInfo.setEmail(ds.child().child("Email").getValue(Person.class).getEmail());
+            uInfo.setName(databaseReference.child().child("Name").getValue(Person.class).getName());
+            uInfo.setDescription( databaseReference.child().child("Description").getValue(Person.class).getDescription());
+            uInfo.setLocation( databaseReference.child().child("Location").getValue(Person.class).getLocation());
+            uInfo.setEmail( databaseReference.child().child("Email").getValue(Person.class).getEmail());
 
 
             ArrayList<String> array = new ArrayList<>();
@@ -57,3 +59,4 @@ public class Searching extends AppCompatActivity {
             ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,array);
             listView.setAdapter(adapter);
         }
+*/
