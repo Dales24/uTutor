@@ -13,7 +13,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+import 	java.util.ArrayList;
+import 	android.widget.ArrayAdapter;
 public class Searching extends AppCompatActivity {
 
     public String bio="Biology";
@@ -35,65 +36,24 @@ public class Searching extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
-
-
-
-
+        databaseReference  = firebaseDatabase.getReference();
 
         listView = findViewById(R.id.listView);
-    }}
-/*
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String value  = dataSnapshot.getValue(String.class);
-// need conditions
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
-    //    ListView listView = (ListView)findViewByID(R.id.listView);
+        private void showData(DataSnapshot ds) {
+       Person uInfo = new Person();
+            uInfo.setName(ds.child().child("Name").getValue(Person.class).getName());
+            uInfo.setDescription(ds.child().child("Description").getValue(Person.class).getDescription());
+            uInfo.setLocation(ds.child().child("Location").getValue(Person.class).getLocation());
+            uInfo.setEmail(ds.child().child("Email").getValue(Person.class).getEmail());
 
-    }}
-/*
-    class CustomAdapter extends BaseAdapter {
-        @Override
-        public int getCount(){
-            return profiles.length;
+
+            ArrayList<String> array = new ArrayList<>();
+            array.add(uInfo.getName());
+            array.add(uInfo.getDescription());
+            array.add(uInfo.getLocation());
+            array.add(uInfo.getEmail());
+            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,array);
+            listView.setAdapter(adapter);
         }
-        @Override
-        public Object getItem(int i){
-            return null;
-        }
-        @Override
-        public long getItemId(int i){
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            return null;
-            // need conditions
-        }
-    }}
-// display interface
-
-// button clic action events
-
-
-
-   /* if(dropdown menu == subname){
-       filter through tutors in that sub
-       order by map
-  select statement from the database
-  // we need to figure out location implementatiokn here
-
-    }
-   */
-

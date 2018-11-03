@@ -25,13 +25,7 @@
     android:paddingEnd="16dp"
     android:paddingBottom="8dp"
     android:gravity="center">
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp">
+
 <ImageView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -45,7 +39,7 @@
         android:layout_marginStart="16dp"
 tools:text="@string/Tutors"
         android:contentDescription="@string/Tutors"/>
-    </ScrollView>
+
 
 </LinearLayout>
 
