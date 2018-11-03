@@ -28,7 +28,7 @@ public class TutorReg extends AppCompatActivity {
 
 
     //    Person person = new Person();
-FirebaseAuth mAuth;
+
         private EditText school;
         private EditText age;
         private EditText name;
@@ -59,11 +59,11 @@ FirebaseAuth mAuth;
             email = (EditText) findViewById(R.id.email);
             password = (EditText) findViewById(R.id.password);
             save = (Button) findViewById(R.id.save);
-    //        firebaseDatabase = FirebaseDatabase.getInstance();
+         firebaseDatabase = FirebaseDatabase.getInstance();
 
 
 
-            databaseReference = firebaseDatabase.getInstance().getReference().child("Tutors");
+            databaseReference = firebaseDatabase.getReference().child("Tutors");
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,7 +82,7 @@ FirebaseAuth mAuth;
                     mChild.child("GPA").setValue(gpa.getText().toString().trim());
                     mChild.child("School").setValue(school.getText().toString().trim());
                     mChild.child("Major").setValue(major.getSelectedItem().toString());
-              sendEmailVerification();
+           //   sendEmailVerification();
 
 
 

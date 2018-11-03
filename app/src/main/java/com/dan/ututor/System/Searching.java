@@ -40,8 +40,11 @@ public class Searching extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         listView = findViewById(R.id.listView);
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
-        databaseReference = firebaseDatabase.getInstance().getReference().child("Tutors");
+
+
+        databaseReference = firebaseDatabase.getReference().child("Tutors");
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,array);
    listView.setAdapter(adapter);
 
