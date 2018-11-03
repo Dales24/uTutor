@@ -10,8 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="182dp"
         android:layout_weight="3"
-        android:text="TextView"
+        android:text="@string/question"
         android:textSize="24sp"
         android:textStyle="bold|italic"
-        tools:text="@string/question" />
+        />
+
+
 </LinearLayout>

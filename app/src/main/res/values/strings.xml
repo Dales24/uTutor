@@ -7,8 +7,13 @@
     <string name="School">School</string>
     <string name="Age">Age</string>
     <string name="Password">Password</string>
+    <string name="List_Item">List Item</string>
+    <string name="List_View">List View</string>
     <string name="Location">Location</string>
     <string name="Name">Name</string>
+    <string name="Logout">Logout</string>
+    <string name="deleteacc">Delete Account</string>
+    <string name="Search">Search</string>
     <string name="SAVE">SAVE</string>
     <string name="IncorrectLogin"> Incorrect Login</string>
     <string name="Login">Login</string>

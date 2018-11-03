@@ -10,20 +10,18 @@ public class Person {
         private String school;
         private int age;
         private String name;
-
         private String location;
         private String description;
+    private String major;
         private double gpa;
-        private int rating;
         private boolean online;
         public Person() {
-            // Default constructor required for calls to DataSnapshot.getValue(User.class)
+
         }
         //constructor for setting up profile info
-public Person(String email, String password, String school, int age, String firstName,String lastName,
-              String location, String description, double gpa){
-    this.email=email;
-    this.password=password;
+public Person( String school, int age, String name,
+              String location, String description, double gpa,String major){
+
     this.school=school;
     this.age=age;
     this.name= name;
@@ -31,8 +29,19 @@ public Person(String email, String password, String school, int age, String firs
     this.location=location;
     this.description=description;
     this.gpa=gpa;
-
+    this.major=major;
 }
+    public Person( String school, int age, String name,
+                   String location, String description, double gpa){
+
+        this.school=school;
+        this.age=age;
+        this.name= name;
+
+        this.location=location;
+        this.description=description;
+        this.gpa=gpa;
+    }
 // resetting email and password
     public Person(String email, String password) {
         this.email = email;
@@ -40,9 +49,9 @@ public Person(String email, String password, String school, int age, String firs
         }
 
 // updating user rating from others
-public Person(int rating){
-          this.rating=rating;
-}
+//public Person(int rating){
+   //       this.rating=rating;
+//}
 
 //setting online status
     public Person(boolean online){
@@ -55,7 +64,7 @@ public Person(int rating){
              this.id=id;
         }
 
-        public int getRating(){return rating;}
+      //  public int getRating(){return rating;}
 
         public boolean getOnline() {
         return online;
@@ -75,7 +84,7 @@ public Person(int rating){
 
         public double getGPA(){return gpa;}
 
-        public String getname(){return name;}
+        public String getName(){return name;}
 
 
         public String getDescription(){return description;}
@@ -96,7 +105,7 @@ public Person(int rating){
 
         public void setGPA(double gpa){this.gpa=gpa;}
 
-        public void setname(String firstName){this.name=name;}
+        public void setName(String Name){this.name=name;}
 
 
 

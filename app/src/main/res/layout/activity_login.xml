@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Login"
-    tools:layout_editor_absoluteY="81dp">
+    android:layout_height="wrap_content">
 
-
-
-
-        <Button
-            android:id="@+id/registertutor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
-            android:background="@android:color/holo_blue_bright"
-            android:onClick="loginClicked"
-            android:text="@string/TutorRegistration"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/reset"
@@ -34,9 +21,21 @@
             app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
             app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
+        <Button
+            android:id="@+id/registertutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="156dp"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="loginClicked"
+            android:text="@string/TutorRegistration"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
+            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+
         <EditText
             android:id="@+id/emailInput"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:ems="10"
@@ -51,10 +50,6 @@
             android:id="@+id/passwordInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="@string/Password"
@@ -98,5 +93,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.41"
             app:layout_constraintStart_toStartOf="parent" />
-</android.support.constraint.ConstraintLayout>
 
+
+</android.support.constraint.ConstraintLayout>
+</ScrollView>
