@@ -84,26 +84,18 @@ public class Log extends AppCompatActivity {
             }
         });
     }
-    private void verifyEmail(){
+    private boolean verifyEmail(){
         FirebaseUser user = mAuth.getCurrentUser();
         emailCheck = user.isEmailVerified();
         if(emailCheck==true){
+         return true;
+            }
 
-                Intent intent = new Intent(Log.this, TutorProfile.class);
-                startActivity(intent);
-                finish();
-            }
-            /*
-            else {
-                verifyEmail();
-                Intent intent = new Intent(Log.this, StudentProfile.class);
-                startActivity(intent);
-                finish();
-            }
-*/
+
 
 else{
             Toast.makeText(this,"Please Verify Account",Toast.LENGTH_SHORT).show();
             mAuth.signOut();
+            return false;
         }
     }}
