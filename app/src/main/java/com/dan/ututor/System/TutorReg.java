@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import android.text.TextUtils;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -62,80 +62,72 @@ public class TutorReg extends AppCompatActivity {
          firebaseDatabase = FirebaseDatabase.getInstance();
 
 
-
             databaseReference = firebaseDatabase.getReference().child("Tutors");
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    //      if(name!= null | email!= null | password!= null) {
-                    DatabaseReference mChild = databaseReference.push();
-                    String id = databaseReference.getKey();
-                    // need to create major option button
-                    mChild.child("Name").setValue(name.getText().toString().trim());
-                    mChild.child("Age").setValue(age.getText().toString().trim());
-                    mChild.child("Location").setValue(location.getText().toString().trim());
-                    mChild.child("Password").setValue(password.getText().toString().trim());
-                    mChild.child("Email").setValue(email.getText().toString().trim());
-                    mChild.child("Description").setValue(description.getText().toString().trim());
-                    mChild.child("GPA").setValue(gpa.getText().toString().trim());
-                    mChild.child("School").setValue(school.getText().toString().trim());
-                    mChild.child("Major").setValue(major.getSelectedItem().toString());
-           //   sendEmailVerification();
-
-
-
-
-
-
-                                        }
-
-
+                    String email2 = email.getText().toString();
+                    String password2 = password.getText().toString();
+                    String name2 = name.getText().toString();
+                    if(!TextUtils.isEmpty(name2) && !TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
+                        //      if(name!= null | email!= null | password!= null) {
+                        DatabaseReference mChild = databaseReference.push();
+                        String id = databaseReference.getKey();
+                        // need to create major option button
+                        mChild.child("Name").setValue(name.getText().toString().trim());
+                        mChild.child("Age").setValue(age.getText().toString().trim());
+                        mChild.child("Location").setValue(location.getText().toString().trim());
+                        mChild.child("Password").setValue(password.getText().toString().trim());
+                        mChild.child("Email").setValue(email.getText().toString().trim());
+                        mChild.child("Description").setValue(description.getText().toString().trim());
+                        mChild.child("GPA").setValue(gpa.getText().toString().trim());
+                        mChild.child("School").setValue(school.getText().toString().trim());
+                        mChild.child("Major").setValue(major.getSelectedItem().toString());
+                        //sendEmailVerification();
+                        Intent intent = new Intent(TutorReg.this, com.dan.ututor.Log.class);
+                        startActivity(intent);
+                        finish();
+                    }
 
 
-                private void sendUserToLogin() {
-                    Intent intent = new Intent(TutorReg.this, Log.class);
-                    startActivity(intent);
-                    finish();
 
-                }
+
+                    }
+
+
 
 
                 private void sendEmailVerification() {
-
-                    firebaseAuth= FirebaseAuth.getInstance();
                     String email2 = email.getText().toString();
                     String password2 = password.getText().toString();
-                    firebaseAuth.createUserWithEmailAndPassword(email2, password2)
-                            .addOnCompleteListener(TutorReg.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                                            user.sendEmailVerification()
-                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            user.sendEmailVerification();
-                                                            if (task.isSuccessful()) {
-                                                                finish();
-                                                                Toast.makeText(TutorReg.this, "Registered Successfully. Check your email", Toast.LENGTH_SHORT).show();
-                                                                startActivity(new Intent(getApplicationContext(), Log.class));
-                                                            }
-                                                        }
-                                                    });
+                    firebaseAuth.createUserWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                            if (firebaseAuth.getCurrentUser() != null) {
-                                                finish();
-                                                startActivity(new Intent(getApplicationContext(), Log.class));
-                                            }
-                                        } else {
-                                            Toast.makeText(TutorReg.this, "Could not Register User. Try Again", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-});}});}}
+                            if(task.isSuccessful()){
+
+                                String user_id = firebaseAuth.getCurrentUser().getUid();
+
+                                DatabaseReference cureent_user_db = databaseReference.child(user_id);
+
+                                cureent_user_db.child("name").setValue(name);
+
+
+                                Intent intent = new Intent(TutorReg.this, Log.class);
+                                startActivity(intent);
+                                finish();
+
+
+
+                            }
+
+                        }
+                    });
+
+                }
+});}}
 
 
 

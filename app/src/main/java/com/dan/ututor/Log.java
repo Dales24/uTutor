@@ -10,7 +10,7 @@ import android.widget.EditText;
 import 	android.content.Intent;
 import android.widget.Toast;
 
-
+import android.text.TextUtils;
 import com.dan.ututor.System.Settings;
 import com.dan.ututor.System.StudentReg;
 import com.dan.ututor.System.TutorReg;
@@ -22,7 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Log extends AppCompatActivity {
-
+    private EditText password;
+    private EditText email;
     Button login;
     Button reset;
     Button registerstudent;
@@ -98,4 +99,17 @@ else{
             mAuth.signOut();
             return false;
         }
-    }}
+        /*
+        private void checkLogin() {
+            String email2 = email.getText().toString();
+            String password2 = password.getText().toString();
+        if(!TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)){
+
+
+           mAuth.signInWithEmailAndPassword().addOnCompleteListener(){
+
+            }
+                }
+            });*/
+
+        }}
