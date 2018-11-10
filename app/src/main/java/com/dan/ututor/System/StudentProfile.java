@@ -33,7 +33,7 @@ public class StudentProfile extends AppCompatActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Students");
+        databaseReference = firebaseDatabase.getReference("Students");
 // mock need variables to replace tis
 
         try {
