@@ -76,6 +76,7 @@ public class TutorReg extends AppCompatActivity {
                         String id = databaseReference.getKey();
                         // need to create major option button
                         mChild.child("Name").setValue(name.getText().toString().trim());
+                        mChild.child("Name").setValue(name.getText().toString().trim());
                         mChild.child("Age").setValue(age.getText().toString().trim());
                         mChild.child("Location").setValue(location.getText().toString().trim());
                         mChild.child("Password").setValue(password.getText().toString().trim());

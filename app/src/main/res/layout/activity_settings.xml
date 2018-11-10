@@ -32,12 +32,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="24dp"
         android:background="@android:color/holo_blue_bright"
-        android:onClick="loginClicked"
+
         android:text="@string/ResetPassword"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:background="@android:color/holo_blue_bright"
-        android:onClick="loginClicked"
+
         android:text="@string/Logout"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:background="@android:color/holo_blue_bright"
-        android:onClick="loginClicked"
+
         android:text="@string/deleteacc"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
