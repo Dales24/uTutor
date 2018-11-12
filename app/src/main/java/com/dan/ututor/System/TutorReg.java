@@ -29,6 +29,7 @@ public class TutorReg extends AppCompatActivity {
 
     //    Person person = new Person();
 
+    private FirebaseAuth mAuth;
         private EditText school;
         private EditText age;
         private EditText name;
@@ -39,9 +40,10 @@ public class TutorReg extends AppCompatActivity {
         private EditText password;
         private EditText email;
         Button save;
+        String ids;
         FirebaseDatabase firebaseDatabase;
         DatabaseReference databaseReference;
-
+    public String getIDs(){return ids;}
     FirebaseAuth  firebaseAuth;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +63,9 @@ public class TutorReg extends AppCompatActivity {
             save = (Button) findViewById(R.id.save);
          firebaseDatabase = FirebaseDatabase.getInstance();
 
+            String email2=email.getText().toString().trim();
 
-            databaseReference = firebaseDatabase.getReference().child("Tutors");
+            databaseReference = firebaseDatabase.getReference().child("Tutors").child(email2);
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -75,7 +78,10 @@ public class TutorReg extends AppCompatActivity {
                         DatabaseReference mChild = databaseReference.push();
                         String id = databaseReference.getKey();
                         // need to create major option button
-                  String ids     = mChild.getKey();
+                      ids     = mChild.getKey();
+
+
+
                         Log.d(ids, "onClick: ");
                         mChild.child("id").setValue(ids);
                         mChild.child("Name").setValue(name.getText().toString().trim());
@@ -105,31 +111,38 @@ public class TutorReg extends AppCompatActivity {
                     String email2 = email.getText().toString();
                     String password2 = password.getText().toString();
 
-                    firebaseAuth.createUserWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if(task.isSuccessful()){
 
-                                String user_id = firebaseAuth.getCurrentUser().getUid();
+                                String user_id = mAuth.getCurrentUser().getUid();
 
                                 DatabaseReference cureent_user_db = databaseReference.child(user_id);
 
                                 cureent_user_db.child("name").setValue(name);
+                                cureent_user_db.child("image").setValue("default");
+
 
 
                                 Intent intent = new Intent(TutorReg.this, Log.class);
                                 startActivity(intent);
                                 finish();
 
-
-
                             }
 
                         }
                     });
 
-                }
+
+
+
+                            }
+
+
+
+
 });}}
 
 
