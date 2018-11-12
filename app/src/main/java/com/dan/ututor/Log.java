@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import 	android.content.Intent;
 import android.widget.Toast;
-
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.dan.ututor.System.Settings;
 import com.dan.ututor.System.StudentReg;
@@ -43,200 +43,193 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Log extends AppCompatActivity {
-    private EditText password;
-    private EditText email;
-    Button login;
-    Button reset;
+private EditText password;
+private EditText email;
+Button login;
+Button reset;
 
-    Button registerstudent;
-    Button registertutor;
-    FirebaseAuth mAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
-    DatabaseReference databaseReference2;
-    private Boolean emailCheck;
+Button registerstudent;
+Button registertutor;
+FirebaseAuth mAuth;
+FirebaseDatabase firebaseDatabase;
+DatabaseReference databaseReference;
+DatabaseReference databaseReference2;
+private Boolean emailCheck;
+private GoogleApiClient mGoogleApiClient;
+private static final int RC_SIGN_IN = 1;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_login);
+mAuth = FirebaseAuth.getInstance();
+login = (Button) findViewById(R.id.login);
+reset = (Button) findViewById(R.id.reset);
+email = (EditText) findViewById(R.id.email);
+password = (EditText) findViewById(R.id.password);
+registerstudent = (Button) findViewById(R.id.registerstudent);
+registertutor = (Button) findViewById(R.id.registertutor);
+firebaseDatabase = FirebaseDatabase.getInstance();
 
+databaseReference = firebaseDatabase.getReference("Students");
+databaseReference2   =   firebaseDatabase.getReference("Tutors");
+login.setOnClickListener(new View.OnClickListener() {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        mAuth = FirebaseAuth.getInstance();
-        login = (Button) findViewById(R.id.login);
-        reset = (Button) findViewById(R.id.reset);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
-        registerstudent = (Button) findViewById(R.id.registerstudent);
-        registertutor = (Button) findViewById(R.id.registertutor);
-        firebaseDatabase = FirebaseDatabase.getInstance();
+    public void onClick(View v) {
+        // need verification condition
 
-        databaseReference = firebaseDatabase.getReference("Students");
-        databaseReference2   =   firebaseDatabase.getReference("Tutors");
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // need verification condition
+        Intent intent = new Intent(Log.this, TutorProfile.class);
+        startActivity(intent);
+        finish();
+           // verifyEmail();
 
-                Intent intent = new Intent(Log.this, TutorProfile.class);
-                startActivity(intent);
-                finish();
-                   // verifyEmail();
-
-            }
-        });
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Log.this, Settings.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        registerstudent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Log.this, StudentReg.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        registertutor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Log.this, TutorReg.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }   /*
-    private boolean verifyEmail(){
-        FirebaseUser user = mAuth.getCurrentUser();
-        emailCheck = user.isEmailVerified();
-        if(emailCheck==true){
-         return true;
-            }
-else{
-            Toast.makeText(this,"Please Verify Account",Toast.LENGTH_SHORT).show();
-            mAuth.signOut();
-            return false;
-        }
-
-        */
-
-
-        private void signIn() {
-            Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-            startActivityForResult(signInIntent, RC_SIGN_IN);
-        }
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-
-            mProgress.setMessage("Starting Sign in...");
-            mProgress.show();
-
-            if (result.isSuccess()) {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = result.getSignInAccount();
-                firebaseAuthWithGoogle(account);
-            } else {
-                // Google Sign In failed, update UI appropriately
-                // ...
-
-                mProgress.dismiss();
-
-
-            }
-        }
     }
+});
+reset.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(Log.this, Settings.class);
+        startActivity(intent);
+        finish();
+    }
+});
 
-        private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+registerstudent.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(Log.this, StudentReg.class);
+        startActivity(intent);
+        finish();
+    }
+});
 
-            AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-            mAuth.signInWithCredential(credential)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+registertutor.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(Log.this, TutorReg.class);
+        startActivity(intent);
+        finish();
+    }
+});
+}   /*
+private boolean verifyEmail(){
+FirebaseUser user = mAuth.getCurrentUser();
+emailCheck = user.isEmailVerified();
+if(emailCheck==true){
+ return true;
+    }
+else{
+    Toast.makeText(this,"Please Verify Account",Toast.LENGTH_SHORT).show();
+    mAuth.signOut();
+    return false;
+}
 
-                            if (!task.isSuccessful()) {
-                                Log.w(TAG, "signInWithCredential", task.getException());
-                                Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-                            } else {
-
-
-
-                                checkUserExist();
-
-                            }
-
-
-                            // ...
-                        }
-                    });
-        }
-    private void checkLogin() {
-
-        String email2 = email.getText().toString();
-        String password2 = password.getText().toString();
-
-        if(!TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
+*/
 
 
-            mAuth.signInWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+private void signIn() {
+    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+    startActivityForResult(signInIntent, RC_SIGN_IN);
+}
+public void onActivityResult(int requestCode, int resultCode, Intent data) {
+super.onActivityResult(requestCode, resultCode, data);
+
+// Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+if (requestCode == RC_SIGN_IN) {
+    GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+
+
+    if (result.isSuccess()) {
+        // Google Sign In was successful, authenticate with Firebase
+        GoogleSignInAccount account = result.getSignInAccount();
+        firebaseAuthWithGoogle(account);
+    }
+}
+}
+
+private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+
+    AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+    mAuth.signInWithCredential(credential)
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    if (task.isSuccessful()) {
+                    if (!task.isSuccessful()) {
+
+                        Toast.makeText(Log.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+
 
 
                         checkUserExist();
 
-                    } else {
-
-
-                        Toast.makeText(Log.this, "Error Login", Toast.LENGTH_LONG).show();
-
                     }
 
+
+                    // ...
                 }
             });
+}
+private void checkLogin() {
 
-        private void checkUserExist(){
+String email2 = email.getText().toString();
+String password2 = password.getText().toString();
 
-            if(mAuth.getCurrentUser() != null) {
+if(!TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
 
-                final String user_id = mAuth.getCurrentUser().getUid();
 
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+    mAuth.signInWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (dataSnapshot.hasChild(user_id)) {
+            if (task.isSuccessful()) {
 
-                            Intent mainIntent = new Intent(Log.this, TutorReg.class);
-                            mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(mainIntent);
 
-                        } else {
+                checkUserExist();
 
-                            Intent setupIntent = new Intent(Log.this, Log.class);
-                            setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(setupIntent);
+            } else {
 
-                        }
 
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(Log.this, "Error Login", Toast.LENGTH_LONG).show();
 
-                    }
-                });
+            }
 
         }
+    });}}
 
-        }}}}
+private void checkUserExist()
+    {
+
+    if(mAuth.getCurrentUser() != null) {
+
+        final String user_id = mAuth.getCurrentUser().getUid();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.hasChild(user_id)) {
+
+                    Intent mainIntent = new Intent(Log.this, TutorReg.class);
+                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(mainIntent);
+
+                } else {
+
+                    Intent setupIntent = new Intent(Log.this, Log.class);
+                    setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(setupIntent);
+
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+}
+
+}}}}
