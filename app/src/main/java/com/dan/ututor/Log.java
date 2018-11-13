@@ -24,9 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -55,8 +53,7 @@ FirebaseDatabase firebaseDatabase;
 DatabaseReference databaseReference;
 DatabaseReference databaseReference2;
 private Boolean emailCheck;
-private GoogleApiClient mGoogleApiClient;
-private static final int RC_SIGN_IN = 1;
+;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
@@ -126,51 +123,9 @@ else{
 */
 
 
-private void signIn() {
-    Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-    startActivityForResult(signInIntent, RC_SIGN_IN);
-}
-public void onActivityResult(int requestCode, int resultCode, Intent data) {
-super.onActivityResult(requestCode, resultCode, data);
-
-// Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-if (requestCode == RC_SIGN_IN) {
-    GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-
-
-    if (result.isSuccess()) {
-        // Google Sign In was successful, authenticate with Firebase
-        GoogleSignInAccount account = result.getSignInAccount();
-        firebaseAuthWithGoogle(account);
-    }
-}
-}
-
-private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-
-    AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-    mAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-
-                    if (!task.isSuccessful()) {
-
-                        Toast.makeText(Log.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                    } else {
 
 
 
-                        checkUserExist();
-
-                    }
-
-
-                    // ...
-                }
-            });
-}
 private void checkLogin() {
 
 String email2 = email.getText().toString();
