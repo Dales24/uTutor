@@ -64,24 +64,24 @@ public class TutorReg extends AppCompatActivity {
          firebaseDatabase = FirebaseDatabase.getInstance();
 
             String email2=email.getText().toString().trim();
-
-            databaseReference = firebaseDatabase.getReference().child("Tutors").child(email2);
+            mAuth = FirebaseAuth.getInstance();
+            databaseReference = firebaseDatabase.getReference().child("Tutors");
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String email2 = email.getText().toString();
-                    String password2 = password.getText().toString();
-                    String name2 = name.getText().toString();
-                    if(!TextUtils.isEmpty(name2) && !TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
-                        //      if(name!= null | email!= null | password!= null) {
-                        DatabaseReference mChild = databaseReference.push();
-                        String id = databaseReference.getKey();
-                        // need to create major option button
-                      ids     = mChild.getKey();
+                //    String email2 = email.getText().toString();
+                //    String password2 = password.getText().toString();
+               //     String name2 = name.getText().toString();
+               //     if(!TextUtils.isEmpty(name2) && !TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
+
+                   //     DatabaseReference mChild = databaseReference.push();
+                    //    String id = databaseReference.getKey();
+
+                   //   ids     = mChild.getKey();
 
 
-
+/*
                         Log.d(ids, "onClick: ");
                         mChild.child("id").setValue(ids);
                         mChild.child("Name").setValue(name.getText().toString().trim());
@@ -92,12 +92,13 @@ public class TutorReg extends AppCompatActivity {
                         mChild.child("Description").setValue(description.getText().toString().trim());
                         mChild.child("GPA").setValue(gpa.getText().toString().trim());
                         mChild.child("School").setValue(school.getText().toString().trim());
+
                         mChild.child("Major").setValue(major.getSelectedItem().toString());
+
+                        */
                         sendEmailVerification();
-                       // Intent intent = new Intent(TutorReg.this, com.dan.ututor.Log.class);
-                      //  startActivity(intent);
-                       // finish();
-                    }
+
+
 
 
 
@@ -131,7 +132,7 @@ public class TutorReg extends AppCompatActivity {
                                         user_db.child("School").setValue(school.getText().toString().trim());
                                         user_db.child("Major").setValue(major.getSelectedItem().toString());
 
-                                        Intent intent = new Intent(TutorReg.this, Log.class);
+                                        Intent intent = new Intent(TutorReg.this, com.dan.ututor.Log.class);
                                         startActivity(intent);
                                         finish();
                                     }

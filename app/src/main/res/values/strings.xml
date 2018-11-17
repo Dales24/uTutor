@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name">UTUTOR</string>
     <string name="Major">Major</string>
@@ -20,6 +21,7 @@
     <string name="StudentRegistration">Student Registration</string>
     <string name="TutorRegistration">Tutor Registration</string>
     <string name="ResetPassword">Reset Password</string>
+    <string name="ResetEmail">Reset Email</string>
     <string name="question">FOR ALL QUESTIONS EMAIL: Patrickdaley217@gmail.com</string>
     <string name="path">https://capstone-71d9c.firebaseio.com/Tutors</string>
 
@@ -42,4 +44,3 @@
 
     </string-array>
 </resources>
-

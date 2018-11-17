@@ -26,8 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.android.gms.auth.api.Auth;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -73,10 +71,11 @@ login.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         // need verification condition
-
+      checkLogin();
         Intent intent = new Intent(Log.this, TutorProfile.class);
         startActivity(intent);
         finish();
+
            // verifyEmail();
 
     }
@@ -166,15 +165,15 @@ private void checkUserExist()
 
                 if (dataSnapshot.hasChild(user_id)) {
 
-                    Intent mainIntent = new Intent(Log.this, TutorReg.class);
-                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(mainIntent);
+                    Intent intent = new Intent(Log.this, TutorReg.class);
+                    startActivity(intent);
+                    finish();
 
                 } else {
 
-                    Intent setupIntent = new Intent(Log.this, Log.class);
-                    setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(setupIntent);
+                    Intent intent = new Intent(Log.this, Log.class);
+                    startActivity(intent);
+                    finish();
 
                 }
 
