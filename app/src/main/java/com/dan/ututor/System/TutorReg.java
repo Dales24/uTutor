@@ -29,6 +29,7 @@ public class TutorReg extends AppCompatActivity {
 
     //    Person person = new Person();
 
+    private FirebaseAuth mAuth;
         private EditText school;
         private EditText age;
         private EditText name;
@@ -39,9 +40,10 @@ public class TutorReg extends AppCompatActivity {
         private EditText password;
         private EditText email;
         Button save;
+        String ids;
         FirebaseDatabase firebaseDatabase;
         DatabaseReference databaseReference;
-
+    public String getIDs(){return ids;}
     FirebaseAuth  firebaseAuth;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -61,21 +63,25 @@ public class TutorReg extends AppCompatActivity {
             save = (Button) findViewById(R.id.save);
          firebaseDatabase = FirebaseDatabase.getInstance();
 
-
+            String email2=email.getText().toString().trim();
+            mAuth = FirebaseAuth.getInstance();
             databaseReference = firebaseDatabase.getReference().child("Tutors");
 
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String email2 = email.getText().toString();
-                    String password2 = password.getText().toString();
-                    String name2 = name.getText().toString();
-                    if(!TextUtils.isEmpty(name2) && !TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
-                        //      if(name!= null | email!= null | password!= null) {
-                        DatabaseReference mChild = databaseReference.push();
-                        String id = databaseReference.getKey();
-                        // need to create major option button
-                  String ids     = mChild.getKey();
+                //    String email2 = email.getText().toString();
+                //    String password2 = password.getText().toString();
+               //     String name2 = name.getText().toString();
+               //     if(!TextUtils.isEmpty(name2) && !TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
+
+                   //     DatabaseReference mChild = databaseReference.push();
+                    //    String id = databaseReference.getKey();
+
+                   //   ids     = mChild.getKey();
+
+
+/*
                         Log.d(ids, "onClick: ");
                         mChild.child("id").setValue(ids);
                         mChild.child("Name").setValue(name.getText().toString().trim());
@@ -86,12 +92,13 @@ public class TutorReg extends AppCompatActivity {
                         mChild.child("Description").setValue(description.getText().toString().trim());
                         mChild.child("GPA").setValue(gpa.getText().toString().trim());
                         mChild.child("School").setValue(school.getText().toString().trim());
+
                         mChild.child("Major").setValue(major.getSelectedItem().toString());
-                        //sendEmailVerification();
-                        Intent intent = new Intent(TutorReg.this, com.dan.ututor.Log.class);
-                        startActivity(intent);
-                        finish();
-                    }
+
+                        */
+                        sendEmailVerification();
+
+
 
 
 
@@ -105,31 +112,42 @@ public class TutorReg extends AppCompatActivity {
                     String email2 = email.getText().toString();
                     String password2 = password.getText().toString();
 
-                    firebaseAuth.createUserWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+                    String name2 = name.getText().toString();
+                    if(!TextUtils.isEmpty(name2) && !TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
+                        mAuth.createUserWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                            if(task.isSuccessful()){
+                                if (task.isSuccessful()) {
+                                    if (mAuth.getCurrentUser() != null) {
+                                        String user_id = mAuth.getCurrentUser().getUid();
 
-                                String user_id = firebaseAuth.getCurrentUser().getUid();
+                                        DatabaseReference user_db = databaseReference.child(user_id);
 
-                                DatabaseReference cureent_user_db = databaseReference.child(user_id);
+                                        user_db.child("Name").setValue(name.getText().toString().trim());
+                                        user_db.child("Age").setValue(age.getText().toString().trim());
+                                        user_db.child("Location").setValue(location.getText().toString().trim());
+                                        user_db.child("Description").setValue(description.getText().toString().trim());
+                                        user_db.child("GPA").setValue(gpa.getText().toString().trim());
+                                        user_db.child("School").setValue(school.getText().toString().trim());
+                                        user_db.child("Major").setValue(major.getSelectedItem().toString());
 
-                                cureent_user_db.child("name").setValue(name);
-
-
-                                Intent intent = new Intent(TutorReg.this, Log.class);
-                                startActivity(intent);
-                                finish();
-
-
+                                        Intent intent = new Intent(TutorReg.this, com.dan.ututor.Log.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
 
                             }
+                        });
 
-                        }
-                    });
 
-                }
+                    }
+                            }
+
+
+
+
 });}}
 
 

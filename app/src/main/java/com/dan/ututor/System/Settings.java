@@ -19,7 +19,7 @@ public class Settings extends AppCompatActivity {
     private EditText email;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-
+TutorReg reg = new TutorReg();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
@@ -31,19 +31,18 @@ public class Settings extends AppCompatActivity {
 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
+        String email2=email.getText().toString().trim();
 
-
-        databaseReference = firebaseDatabase.getReference().child("Tutors");
+        databaseReference = firebaseDatabase.getReference().child("Tutors").child(email2);
 
         reset.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         DatabaseReference mChild = databaseReference.push();
-
-
-                                        mChild.child("Password").setValue(password.getText().toString().trim());
-                                        mChild.child("Email").setValue(email.getText().toString().trim());
-
+                                String ids= mChild.getKey();
+        ids    =  reg.getIDs();
+                                        mChild.child(ids).child("Email").setValue(email.getText().toString().trim());
+                                        mChild.child(ids).child("Password").setValue(password.getText().toString().trim());
                                             Intent intent = new Intent(Settings.this, com.dan.ututor.Log.class);
                                             startActivity(intent);
                                             finish();
@@ -59,5 +58,4 @@ public class Settings extends AppCompatActivity {
     });
 }
 }
-// resetting email
-//logging out
+

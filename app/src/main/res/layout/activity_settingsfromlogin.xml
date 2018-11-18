@@ -38,7 +38,7 @@
         android:layout_marginTop="26dp"
         android:background="@android:color/holo_blue_bright"
         android:onClick="loginClicked"
-        android:text="@string/ResetPassword"
+        android:text="@string/ResetEmail"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
         app:layout_constraintTop_toBottomOf="@+id/passwordInput2" />
