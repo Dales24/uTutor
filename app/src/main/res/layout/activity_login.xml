@@ -19,7 +19,7 @@
             android:text="@string/ResetPassword"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+            app:layout_constraintTop_toBottomOf="@+id/password" />
 
         <Button
             android:id="@+id/registertutor"
@@ -31,10 +31,10 @@
             android:text="@string/TutorRegistration"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+            app:layout_constraintTop_toBottomOf="@+id/password" />
 
         <EditText
-            android:id="@+id/emailInput"
+            android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
@@ -47,15 +47,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/passwordInput"
+            android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="@string/Password"
             android:inputType="textPassword"
-            app:layout_constraintStart_toStartOf="@+id/emailInput"
-            app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+            app:layout_constraintStart_toStartOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
 
         <Button
             android:id="@+id/login"
@@ -67,7 +67,7 @@
             android:text="@string/Login"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+            app:layout_constraintTop_toBottomOf="@+id/password" />
 
         <Button
             android:id="@+id/registerstudent"
@@ -81,7 +81,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-            app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+            app:layout_constraintTop_toBottomOf="@+id/password" />
 
         <TextView
             android:id="@+id/incorrectLogin"

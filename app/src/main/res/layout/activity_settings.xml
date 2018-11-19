@@ -15,11 +15,11 @@
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/emailInput"
-        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
-        android:id="@+id/emailInput"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"

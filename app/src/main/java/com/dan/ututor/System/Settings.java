@@ -8,17 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.dan.ututor.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Settings extends AppCompatActivity {
-
+   Button deleteaccc;
     Button logout;
     Button reset;
     private EditText password;
     private EditText email;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
 TutorReg reg = new TutorReg();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ TutorReg reg = new TutorReg();
         reset = (Button) findViewById(R.id.reset);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
+        deleteaccc = (Button) findViewById(R.id.deleteaccc);
 
 
 
@@ -38,14 +41,7 @@ TutorReg reg = new TutorReg();
         reset.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        DatabaseReference mChild = databaseReference.push();
-                                String ids= mChild.getKey();
-        ids    =  reg.getIDs();
-                                        mChild.child(ids).child("Email").setValue(email.getText().toString().trim());
-                                        mChild.child(ids).child("Password").setValue(password.getText().toString().trim());
-                                            Intent intent = new Intent(Settings.this, com.dan.ututor.Log.class);
-                                            startActivity(intent);
-                                            finish();
+                               //    mAuth.sendPasswordResetEmail()
 
                                     }
                                     });
@@ -56,6 +52,10 @@ TutorReg reg = new TutorReg();
                 finish();
             }
     });
+        deleteaccc.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+        mAuth.getCurrentUser().delete();
 }
-}
+});
+    }}
 

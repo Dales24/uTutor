@@ -70,12 +70,12 @@ databaseReference2   =   firebaseDatabase.getReference("Tutors");
 login.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        // need verification condition
-      checkLogin();
-        Intent intent = new Intent(Log.this, TutorProfile.class);
-        startActivity(intent);
-        finish();
+       {
+            // need verification condition
+            checkLogin();
 
+
+        }
            // verifyEmail();
 
     }
@@ -106,20 +106,7 @@ registertutor.setOnClickListener(new View.OnClickListener() {
         finish();
     }
 });
-}   /*
-private boolean verifyEmail(){
-FirebaseUser user = mAuth.getCurrentUser();
-emailCheck = user.isEmailVerified();
-if(emailCheck==true){
- return true;
-    }
-else{
-    Toast.makeText(this,"Please Verify Account",Toast.LENGTH_SHORT).show();
-    mAuth.signOut();
-    return false;
 }
-
-*/
 
 
 
@@ -127,8 +114,8 @@ else{
 
 private void checkLogin() {
 
-String email2 = email.getText().toString();
-String password2 = password.getText().toString();
+    String email2 = email.getText().toString();
+    String password2 = password.getText().toString();
 
 if(!TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
 
@@ -165,15 +152,13 @@ private void checkUserExist()
 
                 if (dataSnapshot.hasChild(user_id)) {
 
-                    Intent intent = new Intent(Log.this, TutorReg.class);
+                    Intent intent = new Intent(Log.this, TutorProfile.class);
                     startActivity(intent);
                     finish();
 
                 } else {
 
-                    Intent intent = new Intent(Log.this, Log.class);
-                    startActivity(intent);
-                    finish();
+                    Toast.makeText(Log.this, "Error Login", Toast.LENGTH_LONG).show();
 
                 }
 

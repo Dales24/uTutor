@@ -30,9 +30,9 @@
     public String bus="Business";
     public String criminaljust="Criminal Justice";
     public String sportssci="Sports Science";
-    public String English="English";
+    public String english="English";
     public String history="History";
-
+            public String comsci="Computer Science";
     ListView listView;
     private Spinner major;
     FirebaseDatabase firebaseDatabase;
@@ -61,7 +61,46 @@
                 array.add(email);
                 array.add(descript);
                 adapter.notifyDataSetChanged();}
-            }
+
+                if(major2.equals(english)){
+                String name = dataSnapshot.child("Name").getValue(String.class);
+                String  email= dataSnapshot.child("Email").getValue(String.class);
+                String  descript= dataSnapshot.child("Description").getValue(String.class);
+                //  String value = dataSnapshot.getValue(String.class);
+                array.add(name);
+                array.add(email);
+                array.add(descript);
+                adapter.notifyDataSetChanged();}
+
+                if(major2.equals(communications)){
+                    String name = dataSnapshot.child("Name").getValue(String.class);
+                    String  email= dataSnapshot.child("Email").getValue(String.class);
+                    String  descript= dataSnapshot.child("Description").getValue(String.class);
+                    //  String value = dataSnapshot.getValue(String.class);
+                    array.add(name);
+                    array.add(email);
+                    array.add(descript);
+                    adapter.notifyDataSetChanged();}
+                if(major2.equals(criminaljust)){
+                    String name = dataSnapshot.child("Name").getValue(String.class);
+                    String  email= dataSnapshot.child("Email").getValue(String.class);
+                    String  descript= dataSnapshot.child("Description").getValue(String.class);
+                    //  String value = dataSnapshot.getValue(String.class);
+                    array.add(name);
+                    array.add(email);
+                    array.add(descript);
+                    adapter.notifyDataSetChanged();}
+                if(major2.equals(comsci)){
+                    String name = dataSnapshot.child("Name").getValue(String.class);
+                    String  email= dataSnapshot.child("Email").getValue(String.class);
+                    String  descript= dataSnapshot.child("Description").getValue(String.class);
+                    //  String value = dataSnapshot.getValue(String.class);
+                    array.add(name);
+                    array.add(email);
+                    array.add(descript);
+                    adapter.notifyDataSetChanged();}
+        }
+
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
