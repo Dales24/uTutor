@@ -80,7 +80,10 @@
                     array.add(name);
                     array.add(email);
                     array.add(descript);
-                    adapter.notifyDataSetChanged();}
+                    adapter.notifyDataSetChanged();
+
+
+             }
                 if(major2.equals(criminaljust)){
                     String name = dataSnapshot.child("Name").getValue(String.class);
                     String  email= dataSnapshot.child("Email").getValue(String.class);

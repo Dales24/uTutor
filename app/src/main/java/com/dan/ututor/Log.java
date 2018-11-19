@@ -72,7 +72,9 @@ login.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
        {
             // need verification condition
-            checkLogin();
+           Intent intent = new Intent(Log.this, TutorProfile.class);
+           startActivity(intent);
+           finish();
 
 
         }

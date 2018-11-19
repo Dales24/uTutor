@@ -84,7 +84,7 @@ public class TutorProfile extends AppCompatActivity {
                 return true;
             }
         });
-
+/*
         if (mAuth.getCurrentUser() != null) {
             String user_id = mAuth.getCurrentUser().getUid();
             DatabaseReference user_db = databaseReference.child(user_id);
@@ -109,7 +109,7 @@ public class TutorProfile extends AppCompatActivity {
                 }
             });
 
-        }
+        } */
                 save.setOnClickListener((new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
