@@ -107,8 +107,8 @@ public class TutorProfile extends AppCompatActivity {
                 save.setOnClickListener((new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                 FirebaseUser user   =  mAuth.getCurrentUser();
-                        if ( user != null) {
+
+                        if (mAuth.getCurrentUser() != null) {
                             String user_id = mAuth.getCurrentUser().getUid();
 
                             DatabaseReference user_db = databaseReference.child(user_id);
@@ -120,10 +120,7 @@ public class TutorProfile extends AppCompatActivity {
                             user_db.child("GPA").setValue(gpa.getText().toString().trim());
                             user_db.child("School").setValue(school.getText().toString().trim());
                             user_db.child("Major").setValue(major.getSelectedItem().toString());
-
-
-                        }
-                    }
+                    }}
                 }));
             }
 
