@@ -50,9 +50,9 @@ password = (EditText) findViewById(R.id.password2);
 registerstudent = (Button) findViewById(R.id.registerstudent);
 registertutor = (Button) findViewById(R.id.registertutor);
 firebaseDatabase = FirebaseDatabase.getInstance();
+    databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors");
+    databaseReference.keepSynced(true);
 
-databaseReference = firebaseDatabase.getReference("Students");
-databaseReference2   =   firebaseDatabase.getReference("Tutors");
 login.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
