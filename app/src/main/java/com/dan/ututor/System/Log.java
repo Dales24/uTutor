@@ -1,42 +1,28 @@
-package com.dan.ututor;
+package com.dan.ututor.System;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import 	android.content.Intent;
 import android.widget.Toast;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.dan.ututor.System.Settings;
-import com.dan.ututor.System.StudentReg;
-import com.dan.ututor.System.TutorReg;
-import com.dan.ututor.System.StudentProfile;
-import com.dan.ututor.System.TutorProfile;
+
+import com.dan.ututor.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-import com.google.android.gms.auth.api.Auth;
-
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Log extends AppCompatActivity {
 private EditText password;
@@ -59,8 +45,8 @@ setContentView(R.layout.activity_login);
 mAuth = FirebaseAuth.getInstance();
 login = (Button) findViewById(R.id.login);
 reset = (Button) findViewById(R.id.reset);
-email = (EditText) findViewById(R.id.email);
-password = (EditText) findViewById(R.id.password);
+email = (EditText) findViewById(R.id.email1);
+password = (EditText) findViewById(R.id.password2);
 registerstudent = (Button) findViewById(R.id.registerstudent);
 registertutor = (Button) findViewById(R.id.registertutor);
 firebaseDatabase = FirebaseDatabase.getInstance();
@@ -72,9 +58,7 @@ login.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
        {
             // need verification condition
-           Intent intent = new Intent(Log.this, TutorProfile.class);
-           startActivity(intent);
-           finish();
+          checkLogin();
 
 
         }

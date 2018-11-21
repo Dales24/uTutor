@@ -27,8 +27,8 @@ TutorReg reg = new TutorReg();
         setContentView(R.layout.activity_settings);
         logout = (Button) findViewById(R.id.logout);
         reset = (Button) findViewById(R.id.reset);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
+        email = (EditText) findViewById(R.id.email1);
+        password = (EditText) findViewById(R.id.password2);
         deleteaccc = (Button) findViewById(R.id.deleteaccc);
 
 
@@ -47,7 +47,7 @@ TutorReg reg = new TutorReg();
                                     });
         logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, com.dan.ututor.Log.class);
+                Intent intent = new Intent(Settings.this, Log.class);
                 startActivity(intent);
                 finish();
             }

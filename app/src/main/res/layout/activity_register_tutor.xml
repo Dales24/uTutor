@@ -12,7 +12,7 @@
 
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/password2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="296dp"
@@ -20,11 +20,11 @@
         android:hint="@string/Password"
         android:inputType="textPassword"
 
-        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintStart_toStartOf="@+id/email1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/email1"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="248dp"

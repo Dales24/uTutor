@@ -3,13 +3,11 @@ package com.dan.ututor.System;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.dan.ututor.Log;
 import com.dan.ututor.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,7 +20,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class StudentReg extends AppCompatActivity {
 
@@ -54,8 +51,8 @@ public class StudentReg extends AppCompatActivity {
         location = (EditText) findViewById(R.id.location);
         description = (EditText) findViewById(R.id.description);
         gpa = (EditText) findViewById(R.id.gpa);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
+        email = (EditText) findViewById(R.id.email1);
+        password = (EditText) findViewById(R.id.password2);
         save = (Button) findViewById(R.id.save);
         //        firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -98,7 +95,7 @@ public class StudentReg extends AppCompatActivity {
                             user_db.child("School").setValue(school.getText().toString().trim());
                             user_db.child("Major").setValue(major.getSelectedItem().toString());
 
-                            Intent intent = new Intent(StudentReg.this, com.dan.ututor.Log.class);
+                            Intent intent = new Intent(StudentReg.this, Log.class);
                             startActivity(intent);
                             finish();
                         }
