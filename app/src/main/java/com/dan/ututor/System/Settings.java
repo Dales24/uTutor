@@ -6,12 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import com.google.firebase.auth.FirebaseUser;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.dan.ututor.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import android.support.annotation.NonNull;
+import android.widget.SectionIndexer;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 public class Settings extends AppCompatActivity {
    Button deleteaccc;
     Button logout;
@@ -54,8 +59,25 @@ TutorReg reg = new TutorReg();
     });
         deleteaccc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-        mAuth.getCurrentUser().delete();
-}
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                if(currentUser !=null){
+                currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                            startActivity(new Intent(Settings.this, Log.class));
+                            finish();
+                        } else {
+                            Toast.makeText(Settings.this, "Error ", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });}
+            }
+
+
+
 });
     }}
 
