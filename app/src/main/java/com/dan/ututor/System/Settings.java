@@ -46,7 +46,16 @@ TutorReg reg = new TutorReg();
         reset.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                               //    mAuth.sendPasswordResetEmail()
+                                        String email2=email.getText().toString().trim();
+                                        FirebaseAuth.getInstance().sendPasswordResetEmail(email2)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Toast.makeText(Settings.this, "Sent", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
+                                                });
 
                                     }
                                     });
