@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Log"
+    tools:context=".System.Log"
     tools:layout_editor_absoluteY="81dp">
 
     <EditText
-        android:id="@+id/passwordInput2"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/emailInput"
-        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
-        android:id="@+id/emailInput"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -32,16 +32,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:background="@android:color/holo_blue_bright"
         android:onClick="loginClicked"
-        android:text="@string/ResetEmail"
+        android:text="@string/ResetPassword"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput2" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
         android:id="@+id/incorrectLogin"
@@ -54,5 +54,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/reset" />
 </android.support.constraint.ConstraintLayout>

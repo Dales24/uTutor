@@ -6,19 +6,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+import com.google.firebase.auth.FirebaseUser;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.dan.ututor.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import android.support.annotation.NonNull;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 public class Settings extends AppCompatActivity {
-
+   Button deleteaccc;
     Button logout;
     Button reset;
     private EditText password;
     private EditText email;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
 TutorReg reg = new TutorReg();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +32,8 @@ TutorReg reg = new TutorReg();
         logout = (Button) findViewById(R.id.logout);
         reset = (Button) findViewById(R.id.reset);
         email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
+        password = (EditText) findViewById(R.id.password2);
+        deleteaccc = (Button) findViewById(R.id.deleteaccc);
 
 
 
@@ -38,24 +45,47 @@ TutorReg reg = new TutorReg();
         reset.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        DatabaseReference mChild = databaseReference.push();
-                                String ids= mChild.getKey();
-        ids    =  reg.getIDs();
-                                        mChild.child(ids).child("Email").setValue(email.getText().toString().trim());
-                                        mChild.child(ids).child("Password").setValue(password.getText().toString().trim());
-                                            Intent intent = new Intent(Settings.this, com.dan.ututor.Log.class);
-                                            startActivity(intent);
-                                            finish();
+                                        String email2=email.getText().toString().trim();
+                                        FirebaseAuth.getInstance().sendPasswordResetEmail(email2)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Toast.makeText(Settings.this, "Sent", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
+                                                });
 
                                     }
                                     });
         logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.this, com.dan.ututor.Log.class);
+                Intent intent = new Intent(Settings.this, Log.class);
                 startActivity(intent);
                 finish();
             }
     });
-}
-}
+        deleteaccc.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                if(currentUser !=null){
+                currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                            startActivity(new Intent(Settings.this, Log.class));
+                            finish();
+                        } else {
+                            Toast.makeText(Settings.this, "Error ", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });}
+            }
+
+
+
+});
+    }}
 

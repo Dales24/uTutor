@@ -5,14 +5,13 @@ import android.os.Bundle;
 
 
 import com.dan.ututor.R;
-import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
 import android.text.TextUtils;
 
 import android.support.annotation.NonNull;
@@ -21,7 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
 import com.google.firebase.auth.AuthResult;
 public class TutorReg extends AppCompatActivity {
 
@@ -59,7 +58,7 @@ public class TutorReg extends AppCompatActivity {
             gpa = (EditText) findViewById(R.id.gpa);
             major = (Spinner) findViewById(R.id.spinner1);
             email = (EditText) findViewById(R.id.email);
-            password = (EditText) findViewById(R.id.password);
+            password = (EditText) findViewById(R.id.password2);
             save = (Button) findViewById(R.id.save);
          firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -131,10 +130,21 @@ public class TutorReg extends AppCompatActivity {
                                         user_db.child("GPA").setValue(gpa.getText().toString().trim());
                                         user_db.child("School").setValue(school.getText().toString().trim());
                                         user_db.child("Major").setValue(major.getSelectedItem().toString());
+                              FirebaseUser    user    =  mAuth.getCurrentUser();
+                                        if(mAuth.getCurrentUser() != null)
+                                        user.sendEmailVerification()
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Intent intent = new Intent(TutorReg.this, com.dan.ututor.System.Log.class);
+                                                            startActivity(intent);
+                                                            finish();
+                                                        }
+                                                    }
+                                                });
 
-                                        Intent intent = new Intent(TutorReg.this, com.dan.ututor.Log.class);
-                                        startActivity(intent);
-                                        finish();
+
                                     }
                                 }
 

@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.dan.ututor.Log;
 import com.dan.ututor.R;
 
 public class Nav extends AppCompatActivity {

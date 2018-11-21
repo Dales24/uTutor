@@ -1,42 +1,28 @@
-package com.dan.ututor;
+package com.dan.ututor.System;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import 	android.content.Intent;
 import android.widget.Toast;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.dan.ututor.System.Settings;
-import com.dan.ututor.System.StudentReg;
-import com.dan.ututor.System.TutorReg;
-import com.dan.ututor.System.StudentProfile;
-import com.dan.ututor.System.TutorProfile;
+
+import com.dan.ututor.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-import com.google.android.gms.auth.api.Auth;
-
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Log extends AppCompatActivity {
 private EditText password;
@@ -60,22 +46,22 @@ mAuth = FirebaseAuth.getInstance();
 login = (Button) findViewById(R.id.login);
 reset = (Button) findViewById(R.id.reset);
 email = (EditText) findViewById(R.id.email);
-password = (EditText) findViewById(R.id.password);
+password = (EditText) findViewById(R.id.password2);
 registerstudent = (Button) findViewById(R.id.registerstudent);
 registertutor = (Button) findViewById(R.id.registertutor);
 firebaseDatabase = FirebaseDatabase.getInstance();
+    databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors");
+    databaseReference.keepSynced(true);
 
-databaseReference = firebaseDatabase.getReference("Students");
-databaseReference2   =   firebaseDatabase.getReference("Tutors");
 login.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        // need verification condition
-      checkLogin();
-        Intent intent = new Intent(Log.this, TutorProfile.class);
-        startActivity(intent);
-        finish();
+       {
+            // need verification condition
+          checkLogin();
 
+
+        }
            // verifyEmail();
 
     }
@@ -83,7 +69,7 @@ login.setOnClickListener(new View.OnClickListener() {
 reset.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(Log.this, Settings.class);
+        Intent intent = new Intent(Log.this, SettingsLog.class);
         startActivity(intent);
         finish();
     }
@@ -106,20 +92,7 @@ registertutor.setOnClickListener(new View.OnClickListener() {
         finish();
     }
 });
-}   /*
-private boolean verifyEmail(){
-FirebaseUser user = mAuth.getCurrentUser();
-emailCheck = user.isEmailVerified();
-if(emailCheck==true){
- return true;
-    }
-else{
-    Toast.makeText(this,"Please Verify Account",Toast.LENGTH_SHORT).show();
-    mAuth.signOut();
-    return false;
 }
-
-*/
 
 
 
@@ -127,8 +100,8 @@ else{
 
 private void checkLogin() {
 
-String email2 = email.getText().toString();
-String password2 = password.getText().toString();
+    String email2 = email.getText().toString();
+    String password2 = password.getText().toString();
 
 if(!TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
 
@@ -165,15 +138,13 @@ private void checkUserExist()
 
                 if (dataSnapshot.hasChild(user_id)) {
 
-                    Intent intent = new Intent(Log.this, TutorReg.class);
+                    Intent intent = new Intent(Log.this, TutorProfile.class);
                     startActivity(intent);
                     finish();
 
                 } else {
 
-                    Intent intent = new Intent(Log.this, Log.class);
-                    startActivity(intent);
-                    finish();
+                    Toast.makeText(Log.this, "Error Login", Toast.LENGTH_LONG).show();
 
                 }
 

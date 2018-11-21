@@ -3,15 +3,17 @@ package com.dan.ututor.System;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.dan.ututor.Log;
 import com.dan.ututor.R;
+
+import android.view.View;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -28,11 +30,12 @@ public class TutorProfile extends AppCompatActivity {
     private EditText description;
     private EditText gpa;
     private Spinner major;
-
+    private FirebaseAuth mAuth;
     Button save;
 
 
     BottomNavigationView mBottomNavigation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,17 +49,17 @@ public class TutorProfile extends AppCompatActivity {
         major = (Spinner) findViewById(R.id.spinner1);
 
         save = (Button) findViewById(R.id.save);
-            firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
-            databaseReference = firebaseDatabase.getReference("Tutor");
+        databaseReference = firebaseDatabase.getReference("Tutor");
 
 
-        mBottomNavigation =(BottomNavigationView) findViewById(R.id.main_nav);
+        mBottomNavigation = (BottomNavigationView) findViewById(R.id.main_nav);
 
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home:
                         Intent intent = new Intent(TutorProfile.this, Searching.class);
                         startActivity(intent);
@@ -72,27 +75,55 @@ public class TutorProfile extends AppCompatActivity {
                 }
 
                 return true;
-            }});
+            }
+        });
+/*
+        if (mAuth.getCurrentUser() != null) {
+            String user_id = mAuth.getCurrentUser().getUid();
+            DatabaseReference user_db = databaseReference.child(user_id);
 
-        save.setOnClickListener((new View.OnClickListener() {
+            user_db.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+
+                    if (mAuth.getCurrentUser() != null) {
+
+                        String UserUserName = String.valueOf(dataSnapshot.child("Name").getValue());
+                        name.setText(UserUserName);
+                    }
+
+                }
+
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        } */
+                save.setOnClickListener((new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        try {
-                  String    key     = databaseReference.getKey();
+                        if (mAuth.getCurrentUser() != null) {
+                            String user_id = mAuth.getCurrentUser().getUid();
 
-                    databaseReference.child(key).child("Name").setValue(name.getText().toString().trim());
-                     databaseReference.child(key).child("Age").setValue(age.getText().toString().trim());
-                     databaseReference.child(key).child("Location").setValue(location.getText().toString().trim());
-                     databaseReference.child(key).child("Description").setValue(description.getText().toString().trim());
-                     databaseReference.child(key).child("GPA").setValue(gpa.getText().toString().trim());
-                     databaseReference.child(key).child("School").setValue(school.getText().toString().trim());
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            DatabaseReference user_db = databaseReference.child(user_id);
+
+                            user_db.child("Name").setValue(name.getText().toString().trim());
+                            user_db.child("Age").setValue(age.getText().toString().trim());
+                            user_db.child("Location").setValue(location.getText().toString().trim());
+                            user_db.child("Description").setValue(description.getText().toString().trim());
+                            user_db.child("GPA").setValue(gpa.getText().toString().trim());
+                            user_db.child("School").setValue(school.getText().toString().trim());
+                            user_db.child("Major").setValue(major.getSelectedItem().toString());
+
+
                         }
                     }
                 }));
-    }
-}
+            }
 
-// one for online and location,setting and resetting email
-//when other adds rating, when reset the profile
+
+        }
