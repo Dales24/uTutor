@@ -34,7 +34,7 @@
             app:layout_constraintTop_toBottomOf="@+id/password2" />
 
         <EditText
-            android:id="@+id/email1"
+            android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
@@ -54,8 +54,8 @@
             android:ems="10"
             android:hint="@string/Password"
             android:inputType="textPassword"
-            app:layout_constraintStart_toStartOf="@+id/email1"
-            app:layout_constraintTop_toBottomOf="@+id/email1" />
+            app:layout_constraintStart_toStartOf="@+id/email"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
 
         <Button
             android:id="@+id/login"

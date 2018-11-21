@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import android.support.annotation.NonNull;
-import android.widget.SectionIndexer;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
@@ -32,7 +31,7 @@ TutorReg reg = new TutorReg();
         setContentView(R.layout.activity_settings);
         logout = (Button) findViewById(R.id.logout);
         reset = (Button) findViewById(R.id.reset);
-        email = (EditText) findViewById(R.id.email1);
+        email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password2);
         deleteaccc = (Button) findViewById(R.id.deleteaccc);
 

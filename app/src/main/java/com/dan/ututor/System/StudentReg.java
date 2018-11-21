@@ -51,7 +51,7 @@ public class StudentReg extends AppCompatActivity {
         location = (EditText) findViewById(R.id.location);
         description = (EditText) findViewById(R.id.description);
         gpa = (EditText) findViewById(R.id.gpa);
-        email = (EditText) findViewById(R.id.email1);
+        email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password2);
         save = (Button) findViewById(R.id.save);
         //        firebaseDatabase = FirebaseDatabase.getInstance();

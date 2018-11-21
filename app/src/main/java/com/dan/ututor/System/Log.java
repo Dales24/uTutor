@@ -45,7 +45,7 @@ setContentView(R.layout.activity_login);
 mAuth = FirebaseAuth.getInstance();
 login = (Button) findViewById(R.id.login);
 reset = (Button) findViewById(R.id.reset);
-email = (EditText) findViewById(R.id.email1);
+email = (EditText) findViewById(R.id.email);
 password = (EditText) findViewById(R.id.password2);
 registerstudent = (Button) findViewById(R.id.registerstudent);
 registertutor = (Button) findViewById(R.id.registertutor);
@@ -69,7 +69,7 @@ login.setOnClickListener(new View.OnClickListener() {
 reset.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(Log.this, Settings.class);
+        Intent intent = new Intent(Log.this, SettingsLog.class);
         startActivity(intent);
         finish();
     }

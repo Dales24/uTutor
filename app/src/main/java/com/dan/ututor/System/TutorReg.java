@@ -57,7 +57,7 @@ public class TutorReg extends AppCompatActivity {
             description = (EditText) findViewById(R.id.description);
             gpa = (EditText) findViewById(R.id.gpa);
             major = (Spinner) findViewById(R.id.spinner1);
-            email = (EditText) findViewById(R.id.email1);
+            email = (EditText) findViewById(R.id.email);
             password = (EditText) findViewById(R.id.password2);
             save = (Button) findViewById(R.id.save);
          firebaseDatabase = FirebaseDatabase.getInstance();
