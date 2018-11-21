@@ -1,5 +1,6 @@
 package com.dan.ututor.System;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -49,6 +50,9 @@ public class SettingsLog extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(SettingsLog.this, "Sent", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(SettingsLog.this, com.dan.ututor.System.Log.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                             }
                         });

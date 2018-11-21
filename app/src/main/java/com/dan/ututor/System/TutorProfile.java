@@ -8,6 +8,7 @@ import com.dan.ututor.R;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -106,7 +107,8 @@ public class TutorProfile extends AppCompatActivity {
                 save.setOnClickListener((new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mAuth.getCurrentUser() != null) {
+                 FirebaseUser user   =  mAuth.getCurrentUser();
+                        if ( user != null) {
                             String user_id = mAuth.getCurrentUser().getUid();
 
                             DatabaseReference user_db = databaseReference.child(user_id);
