@@ -62,7 +62,7 @@
                 array.add(descript);
                 adapter.notifyDataSetChanged();}
 
-                if(major2.equals(english)){
+              else  if(major2.equals(english)){
                 String name = dataSnapshot.child("Name").getValue(String.class);
                 String  email= dataSnapshot.child("Email").getValue(String.class);
                 String  descript= dataSnapshot.child("Description").getValue(String.class);
@@ -72,7 +72,7 @@
                 array.add(descript);
                 adapter.notifyDataSetChanged();}
 
-                if(major2.equals(communications)){
+              else  if(major2.equals(communications)){
                     String name = dataSnapshot.child("Name").getValue(String.class);
                     String  email= dataSnapshot.child("Email").getValue(String.class);
                     String  descript= dataSnapshot.child("Description").getValue(String.class);
@@ -84,7 +84,7 @@
 
 
              }
-                if(major2.equals(criminaljust)){
+              else  if(major2.equals(criminaljust)){
                     String name = dataSnapshot.child("Name").getValue(String.class);
                     String  email= dataSnapshot.child("Email").getValue(String.class);
                     String  descript= dataSnapshot.child("Description").getValue(String.class);
@@ -93,7 +93,7 @@
                     array.add(email);
                     array.add(descript);
                     adapter.notifyDataSetChanged();}
-                if(major2.equals(comsci)){
+            else if(major2.equals(comsci)){
                     String name = dataSnapshot.child("Name").getValue(String.class);
                     String  email= dataSnapshot.child("Email").getValue(String.class);
                     String  descript= dataSnapshot.child("Description").getValue(String.class);
