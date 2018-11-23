@@ -4,7 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.dan.ututor.R;
-
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -12,7 +13,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -87,7 +90,7 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
                 return true;
             }
         });
-/*
+
         if (mAuth.getCurrentUser() != null) {
             String user_id = mAuth.getCurrentUser().getUid();
             DatabaseReference user_db = databaseReference.child(user_id);
@@ -98,21 +101,34 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
 
 
                     if (mAuth.getCurrentUser() != null) {
+               String  name1  =  dataSnapshot.child("Name").toString();
 
-                        String UserUserName = String.valueOf(dataSnapshot.child("Name").getValue());
-                        name.setText(UserUserName);
+                        name.setText(name1);
+                        age.setText(dataSnapshot.child("Age").getValue(String.class));
+                        location.setText(dataSnapshot.child("Location").getValue(String.class));
+                        //   major.setText("Major");
+                        description.setText(dataSnapshot.child("Description").getValue(String.class));
+                        school.setText(dataSnapshot.child("School").getValue(String.class));
+                        gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
                     }
 
                 }
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
+                }
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+                }
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-
+                    Toast.makeText(TutorProfile.this, "Error ", Toast.LENGTH_LONG).show();
                 }
             });
 
-        } */
+        }
         save.setOnClickListener((new View.OnClickListener() {
 
                     @Override
