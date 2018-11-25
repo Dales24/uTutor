@@ -64,6 +64,7 @@ public Person( String school, int age, String name,
              this.id=id;
         }
 
+
       //  public int getRating(){return rating;}
 
         public boolean getOnline() {
