@@ -6,8 +6,10 @@ import android.os.Bundle;
 import com.dan.ututor.R;
 
 import android.view.View;
-
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,6 +21,7 @@ import android.widget.EditText;
 
 import 	android.support.design.widget.BottomNavigationView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class TutorProfile extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
@@ -33,8 +36,13 @@ public class TutorProfile extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Button save;
 
+    Task<AuthResult> task;
+
+    private FirebaseUser mCurrentUser;
 
     BottomNavigationView mBottomNavigation;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +57,13 @@ public class TutorProfile extends AppCompatActivity {
         major = (Spinner) findViewById(R.id.spinner1);
 
         save = (Button) findViewById(R.id.save);
-        firebaseDatabase = FirebaseDatabase.getInstance();
 
-        databaseReference = firebaseDatabase.getReference("Tutor");
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        mAuth = FirebaseAuth.getInstance();
 
+databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors");
+//        databaseReference.keepSynced(true);
         mBottomNavigation = (BottomNavigationView) findViewById(R.id.main_nav);
 
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -103,13 +113,15 @@ public class TutorProfile extends AppCompatActivity {
             });
 
         } */
-                save.setOnClickListener((new View.OnClickListener() {
+        save.setOnClickListener((new View.OnClickListener() {
+
                     @Override
                     public void onClick(View v) {
-                        if (mAuth.getCurrentUser() != null) {
-                            String user_id = mAuth.getCurrentUser().getUid();
+                        if(mAuth.getCurrentUser() !=null) {
 
-                            DatabaseReference user_db = databaseReference.child(user_id);
+                            String current_uid = mCurrentUser.getUid();
+
+                            DatabaseReference user_db = databaseReference.child(current_uid);
 
                             user_db.child("Name").setValue(name.getText().toString().trim());
                             user_db.child("Age").setValue(age.getText().toString().trim());
@@ -118,8 +130,10 @@ public class TutorProfile extends AppCompatActivity {
                             user_db.child("GPA").setValue(gpa.getText().toString().trim());
                             user_db.child("School").setValue(school.getText().toString().trim());
                             user_db.child("Major").setValue(major.getSelectedItem().toString());
-
-
+                            FirebaseUser    user    =  mAuth.getCurrentUser();
+                    }
+                        else {
+                            Toast.makeText(TutorProfile.this, "Error ", Toast.LENGTH_LONG).show();
                         }
                     }
                 }));

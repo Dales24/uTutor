@@ -69,38 +69,8 @@ public class TutorReg extends AppCompatActivity {
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                //    String email2 = email.getText().toString();
-                //    String password2 = password.getText().toString();
-               //     String name2 = name.getText().toString();
-               //     if(!TextUtils.isEmpty(name2) && !TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
 
-                   //     DatabaseReference mChild = databaseReference.push();
-                    //    String id = databaseReference.getKey();
-
-                   //   ids     = mChild.getKey();
-
-
-/*
-                        Log.d(ids, "onClick: ");
-                        mChild.child("id").setValue(ids);
-                        mChild.child("Name").setValue(name.getText().toString().trim());
-                        mChild.child("Age").setValue(age.getText().toString().trim());
-                        mChild.child("Location").setValue(location.getText().toString().trim());
-                        mChild.child("Password").setValue(password.getText().toString().trim());
-                        mChild.child("Email").setValue(email.getText().toString().trim());
-                        mChild.child("Description").setValue(description.getText().toString().trim());
-                        mChild.child("GPA").setValue(gpa.getText().toString().trim());
-                        mChild.child("School").setValue(school.getText().toString().trim());
-
-                        mChild.child("Major").setValue(major.getSelectedItem().toString());
-
-                        */
                         sendEmailVerification();
-
-
-
-
-
 
                     }
 
