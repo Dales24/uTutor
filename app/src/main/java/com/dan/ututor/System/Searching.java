@@ -69,10 +69,10 @@ import com.dan.ututor.System.TutorElement;
 
            @Override
            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-               Toast.makeText(Searching.this, "haha ", Toast.LENGTH_LONG).show();
+             
                final String major2   = major.getSelectedItem().toString();
-               Toast.makeText(Searching.this, "haha2 ", Toast.LENGTH_LONG).show();
-               System.out.println("LOG SOME SHIT:  major2 - " + major2);
+
+               System.out.println("LOG:  major2 - " + major2);
                array.clear();
                adapter.notifyDataSetChanged();
 
@@ -84,7 +84,7 @@ import com.dan.ututor.System.TutorElement;
                        String name = dataSnapshot.child("Name").getValue(String.class);
 //                       String email = dataSnapshot.child("Email").getValue(String.class);
                        String descript = dataSnapshot.child("Description").getValue(String.class);
-                       System.out.println("ERRRRORSSS:  " + dataSnapshot);
+                       System.out.println("ErrorSS:  " + dataSnapshot);
                        //  String value = dataSnapshot.getValue(String.class);
                       TutorElement tutor = new TutorElement(name, descript);
                      array.add(tutor);
