@@ -9,44 +9,57 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="73dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/description"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/email"
+        app:layout_constraintEnd_toStartOf="@+id/email"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="74dp"
+        android:layout_width="0dp"
         android:layout_height="39dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="390dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toTopOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_marginEnd="77dp"
-        android:layout_marginRight="77dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="126dp"
+        android:layout_marginRight="126dp"
+        android:layout_marginBottom="14dp"
         android:text="Contact "
-        app:layout_constraintBaseline_toBaselineOf="@+id/description"
+        app:layout_constraintBottom_toBottomOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/name" />
+        app:layout_constraintStart_toEndOf="@+id/description"
+        app:layout_constraintTop_toTopOf="@+id/email" />
 
 
 </android.support.constraint.ConstraintLayout>

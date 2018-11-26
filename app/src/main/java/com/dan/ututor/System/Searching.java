@@ -69,7 +69,7 @@ import com.dan.ututor.System.TutorElement;
 
            @Override
            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-             
+
                final String major2   = major.getSelectedItem().toString();
 
                System.out.println("LOG:  major2 - " + major2);
@@ -84,9 +84,10 @@ import com.dan.ututor.System.TutorElement;
                        String name = dataSnapshot.child("Name").getValue(String.class);
 //                       String email = dataSnapshot.child("Email").getValue(String.class);
                        String descript = dataSnapshot.child("Description").getValue(String.class);
+                       String email = dataSnapshot.child("Email").getValue(String.class);
                        System.out.println("ErrorSS:  " + dataSnapshot);
                        //  String value = dataSnapshot.getValue(String.class);
-                      TutorElement tutor = new TutorElement(name, descript);
+                      TutorElement tutor = new TutorElement(name, descript,email);
                      array.add(tutor);
                        adapter.notifyDataSetChanged();
                    }
@@ -157,7 +158,8 @@ import com.dan.ututor.System.TutorElement;
                     vi = inflater.inflate(R.layout.activity_listelement, null);
                 TextView text = (TextView) vi.findViewById(R.id.name);
              TextView text2 = (TextView) vi.findViewById(R.id.description);
-
+             TextView text3 = (TextView) vi.findViewById(R.id.email);
+             text3.setText(data.get(position).getEmail());
                 text.setText(data.get(position).getName());
                 text2.setText(data.get(position).getDescription());
                 return vi;
