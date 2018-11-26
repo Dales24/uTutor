@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">UTUTOR</string>
     <string name="Major">Major</string>
+    <string name="back">back</string>
     <string name="Description">Description</string>
     <string name="Email">Email</string>
     <string name="Gpa">Gpa</string>

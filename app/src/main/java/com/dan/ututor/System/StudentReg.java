@@ -72,11 +72,6 @@ public class StudentReg extends AppCompatActivity {
 
                 sendEmailVerification();
 
-
-
-
-
-
             }
 
 
