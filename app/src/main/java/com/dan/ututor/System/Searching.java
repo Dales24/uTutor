@@ -8,6 +8,7 @@
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.BaseAdapter;
+        import android.widget.Button;
         import android.widget.ListView;
         import com.dan.ututor.R;
       import  android.content.Context;
@@ -154,6 +155,7 @@ import com.dan.ututor.System.TutorElement;
          @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View vi = convertView;
+             Button button;
                 if (vi == null)
                     vi = inflater.inflate(R.layout.activity_listelement, null);
                 TextView text = (TextView) vi.findViewById(R.id.name);
@@ -162,8 +164,20 @@ import com.dan.ututor.System.TutorElement;
              text3.setText(data.get(position).getEmail());
                 text.setText(data.get(position).getName());
                 text2.setText(data.get(position).getDescription());
-                return vi;
-            }
-        }
+             button = vi.findViewById(R.id.button);
+             button.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
 
+
+                     System.out.println("congrats");
+                 }
+
+
+
+             });
+             return vi;
+
+         }
+     }
 
