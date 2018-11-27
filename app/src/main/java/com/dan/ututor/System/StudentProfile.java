@@ -26,9 +26,7 @@ import 	android.support.design.widget.BottomNavigationView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-
 public class StudentProfile extends AppCompatActivity {
-
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private EditText school;
@@ -48,16 +46,27 @@ public class StudentProfile extends AppCompatActivity {
     BottomNavigationView mBottomNavigation;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_profile);
+        setContentView(R.layout.activity_tutor_profile);
+        name = (EditText) findViewById(R.id.name);
+        school = (EditText) findViewById(R.id.school);
+        age = (EditText) findViewById(R.id.age);
+        location = (EditText) findViewById(R.id.location);
+        description = (EditText) findViewById(R.id.description);
+        gpa = (EditText) findViewById(R.id.gpa);
+        major = (Spinner) findViewById(R.id.spinner1);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        save = (Button) findViewById(R.id.save);
 
-        databaseReference = firebaseDatabase.getReference("Students");
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        mAuth = FirebaseAuth.getInstance();
 
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students");
+//        databaseReference.keepSynced(true);
         mBottomNavigation = (BottomNavigationView) findViewById(R.id.main_nav);
 
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -86,69 +95,70 @@ public class StudentProfile extends AppCompatActivity {
             }
         });
 
-    if (mAuth.getCurrentUser() != null) {
+
+        if (mAuth.getCurrentUser() != null) {
             String user_id = mAuth.getCurrentUser().getUid();
             DatabaseReference user_db = databaseReference.child(user_id);
 
             user_db.addChildEventListener(new ChildEventListener() {
-@Override
-public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
 
-        if (mAuth.getCurrentUser() != null) {
-        String  name1  =  dataSnapshot.child("Name").toString();
+                    if (mAuth.getCurrentUser() != null) {
+                        String  name1  =  dataSnapshot.child("Name").toString();
 
-        name.setText(name1);
-        age.setText(dataSnapshot.child("Age").getValue(String.class));
-        location.setText(dataSnapshot.child("Location").getValue(String.class));
-        //   major.setText("Major");
-        description.setText(dataSnapshot.child("Description").getValue(String.class));
-        school.setText(dataSnapshot.child("School").getValue(String.class));
-        gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
-        }
+                        name.setText(name1);
+                        age.setText(dataSnapshot.child("Age").getValue(String.class));
+                        location.setText(dataSnapshot.child("Location").getValue(String.class));
+                        //   major.setText("Major");
+                        description.setText(dataSnapshot.child("Description").getValue(String.class));
+                        school.setText(dataSnapshot.child("School").getValue(String.class));
+                        gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
+                    }
 
-        }
-@Override
-public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                }
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
-        }
-@Override
-public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                }
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-        }
-public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
-@Override
-public void onCancelled(DatabaseError databaseError) {
-        Toast.makeText(StudentProfile.this, "Error ", Toast.LENGTH_LONG).show();
-        }
-        });
+                }
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(StudentProfile.this, "Error ", Toast.LENGTH_LONG).show();
+                }
+            });
 
         }
         save.setOnClickListener((new View.OnClickListener() {
 
-@Override
-public void onClick(View v) {
-        if(mAuth.getCurrentUser() !=null) {
+            @Override
+            public void onClick(View v) {
+                if(mAuth.getCurrentUser() !=null) {
 
-        String current_uid = mCurrentUser.getUid();
+                    String current_uid = mCurrentUser.getUid();
 
-        DatabaseReference user_db = databaseReference.child(current_uid);
+                    DatabaseReference user_db = databaseReference.child(current_uid);
 
-        user_db.child("Name").setValue(name.getText().toString().trim());
-        user_db.child("Age").setValue(age.getText().toString().trim());
-        user_db.child("Location").setValue(location.getText().toString().trim());
-        user_db.child("Description").setValue(description.getText().toString().trim());
-        user_db.child("GPA").setValue(gpa.getText().toString().trim());
-        user_db.child("School").setValue(school.getText().toString().trim());
-        user_db.child("Major").setValue(major.getSelectedItem().toString());
-        FirebaseUser    user    =  mAuth.getCurrentUser();
-        }
-        else {
-        Toast.makeText(StudentProfile.this, "Error ", Toast.LENGTH_LONG).show();
-        }
-        }
+                    user_db.child("Name").setValue(name.getText().toString().trim());
+                    user_db.child("Age").setValue(age.getText().toString().trim());
+                    user_db.child("Location").setValue(location.getText().toString().trim());
+                    user_db.child("Description").setValue(description.getText().toString().trim());
+                    user_db.child("GPA").setValue(gpa.getText().toString().trim());
+                    user_db.child("School").setValue(school.getText().toString().trim());
+                    user_db.child("Major").setValue(major.getSelectedItem().toString());
+                    FirebaseUser    user    =  mAuth.getCurrentUser();
+                }
+                else {
+                    Toast.makeText(StudentProfile.this, "Error ", Toast.LENGTH_LONG).show();
+                }
+            }
         }));
-        }
+    }
 
 
-        }
+}

@@ -12,6 +12,8 @@
         import android.widget.ListView;
         import com.dan.ututor.R;
       import  android.content.Context;
+
+        import com.google.firebase.auth.FirebaseAuth;
         import com.google.firebase.database.ChildEventListener;
         import com.google.firebase.database.DataSnapshot;
         import com.google.firebase.database.DatabaseError;
@@ -42,8 +44,10 @@ import com.dan.ututor.System.TutorElement;
             public String comsci="Computer Science";
     ListView listView;
     private Spinner major;
+    private FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    DatabaseReference databaseReferenceRelation;
     ArrayList<TutorElement> array = new ArrayList<>();
 
 
@@ -52,8 +56,9 @@ import com.dan.ututor.System.TutorElement;
         setContentView(R.layout.activity_search);
         major = (Spinner) findViewById(R.id.spinner1);
         listView = findViewById(R.id.listView);
-
+        mAuth = FirebaseAuth.getInstance();
         databaseReference = firebaseDatabase.getInstance().getReference().child("Tutors");
+        databaseReferenceRelation = firebaseDatabase.getInstance().getReference().child("Relation");
         final yourAdapter adapter = new yourAdapter(this,array);
 
 
@@ -120,6 +125,7 @@ import com.dan.ututor.System.TutorElement;
 
         }
        }
+
      class yourAdapter extends BaseAdapter {
 
             Context context;
@@ -158,9 +164,9 @@ import com.dan.ututor.System.TutorElement;
              Button button;
                 if (vi == null)
                     vi = inflater.inflate(R.layout.activity_listelement, null);
-                TextView text = (TextView) vi.findViewById(R.id.name);
+                final TextView text = (TextView) vi.findViewById(R.id.name);
              TextView text2 = (TextView) vi.findViewById(R.id.description);
-             TextView text3 = (TextView) vi.findViewById(R.id.email);
+             final  TextView text3 = (TextView) vi.findViewById(R.id.email);
              text3.setText(data.get(position).getEmail());
                 text.setText(data.get(position).getName());
                 text2.setText(data.get(position).getDescription());
@@ -168,11 +174,33 @@ import com.dan.ututor.System.TutorElement;
              button.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
+                //     if (mAuth.getCurrentUser() != null) {
+                //         String user_id = mAuth.getCurrentUser().getUid();
+            /*         String email =text3.toString();
+                     String[] TO = {email};
+                     String[] CC = {"xyz@gmail.com"};
+                     Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                     emailIntent.setData(Uri.parse("mailto:"));
+                     emailIntent.setType("text/plain");
 
 
-                     System.out.println("congrats");
-                 }
+                     emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+                     emailIntent.putExtra(Intent.EXTRA_CC, CC);
+                     emailIntent.putExtra(Intent.EXTRA_SUBJECT, "uTutor");
+                     emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello I would like to be tutored");
 
+                     try {
+                         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+                         finish();
+                         Log.i("Finished sending email...", "");
+                     } catch (android.content.ActivityNotFoundException ex) {
+                         Toast.makeText(MainActivity.this,
+                                 "There is no email client installed.", Toast.LENGTH_SHORT).show();
+                     }
+                 }*/
+
+                     }
+                // }
 
 
              });

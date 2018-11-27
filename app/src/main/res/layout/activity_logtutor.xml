@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -58,17 +59,32 @@
             app:layout_constraintStart_toStartOf="@+id/incorrectLogin"
             app:layout_constraintTop_toBottomOf="@+id/password2" />
 
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="loginClicked"
+            android:text="@string/ResetPassword"
+            android:textColor="@android:color/white"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/back"
+            app:layout_constraintTop_toBottomOf="@+id/incorrectLogin" />
 
         <TextView
             android:id="@+id/incorrectLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="352dp"
             android:text="@string/IncorrectLogin"
             android:textColor="#cc1520"
             android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/reset"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.41"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>
