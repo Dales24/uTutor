@@ -14,6 +14,7 @@
       import  android.content.Context;
         import android.net.Uri;
         import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.auth.FirebaseUser;
         import com.google.firebase.database.ChildEventListener;
         import com.google.firebase.database.DataSnapshot;
         import com.google.firebase.database.DatabaseError;
@@ -58,7 +59,7 @@
         listView = findViewById(R.id.listView);
         mAuth = FirebaseAuth.getInstance();
         databaseReference = firebaseDatabase.getInstance().getReference().child("Tutors");
-        databaseReferenceRelation = firebaseDatabase.getInstance().getReference().child("Relation");
+
         final yourAdapter adapter = new yourAdapter(this,array);
 
 
@@ -86,14 +87,14 @@
                    @Override
                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-
+                       String UID = dataSnapshot.child("UID").getValue(String.class);
                        String name = dataSnapshot.child("Name").getValue(String.class);
 //                       String email = dataSnapshot.child("Email").getValue(String.class);
                        String descript = dataSnapshot.child("Description").getValue(String.class);
                        String email = dataSnapshot.child("Email").getValue(String.class);
                        System.out.println("ErrorSS:  " + dataSnapshot);
                        //  String value = dataSnapshot.getValue(String.class);
-                      TutorElement tutor = new TutorElement(name, descript,email);
+                      TutorElement tutor = new TutorElement(name, descript,email,UID);
                      array.add(tutor);
                        adapter.notifyDataSetChanged();
                    }
@@ -127,10 +128,13 @@
        }
 
      class yourAdapter extends BaseAdapter {
-
+         private FirebaseUser mCurrentUser;
             Context context;
             ArrayList<TutorElement> data;
+         private FirebaseAuth mAuth;
+         FirebaseDatabase firebaseDatabase;
             private static LayoutInflater inflater = null;
+         DatabaseReference databaseReferenceRelation;
 
             public yourAdapter(Context context,ArrayList<TutorElement> data) {
 
@@ -160,6 +164,8 @@
 
          @Override
             public View getView(int position, View convertView, ViewGroup parent) {
+                 mAuth = FirebaseAuth.getInstance();
+                databaseReferenceRelation = firebaseDatabase.getInstance().getReference().child("Relation");
                 View vi = convertView;
              Button button;
                 if (vi == null)
@@ -170,13 +176,12 @@
              text3.setText(data.get(position).getEmail());
                 text.setText(data.get(position).getName());
                 text2.setText(data.get(position).getDescription());
+     final   String  UID  = data.get(position).getUID();
              button = vi.findViewById(R.id.button);
              button.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
-                //     if (mAuth.getCurrentUser() != null) {
-                //         St
-                     // ring user_id = mAuth.getCurrentUser().getUid();
+
                      String email = text3.getText().toString();
                      String[] TO = {email};
                  System.out.println("Pat "+email);
@@ -187,12 +192,17 @@
                      emailIntent.putExtra(Intent.EXTRA_SUBJECT, "uTutor");
                      emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello I would like to be tutored");
                      v.getContext().startActivity(Intent.createChooser(emailIntent, "Send Email"));
+
+                     if(mAuth.getCurrentUser() !=null) {
+
+                         String user_id = mAuth.getCurrentUser().getUid();
+
+                         DatabaseReference user_db = databaseReferenceRelation.child(user_id);
+             user_db.child("Student").setValue(user_id);
+             user_db.child("Tutor").setValue(UID);
+
+                     }
                  }
-
-
-                // }
-
-
              });
              return vi;
 
