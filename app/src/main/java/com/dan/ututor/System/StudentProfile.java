@@ -25,7 +25,6 @@ import android.widget.EditText;
 import 	android.support.design.widget.BottomNavigationView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 public class StudentProfile extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -38,15 +37,9 @@ public class StudentProfile extends AppCompatActivity {
     private Spinner major;
     private FirebaseAuth mAuth;
     Button save;
-
     Task<AuthResult> task;
-
     private FirebaseUser mCurrentUser;
-
     BottomNavigationView mBottomNavigation;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,23 +88,18 @@ public class StudentProfile extends AppCompatActivity {
             }
         });
 
-
-        if (mAuth.getCurrentUser() != null) {
-            String user_id = mAuth.getCurrentUser().getUid();
-            DatabaseReference user_db = databaseReference.child(user_id);
-
-            user_db.addChildEventListener(new ChildEventListener() {
+            databaseReference.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
 
                     if (mAuth.getCurrentUser() != null) {
-                        String  name1  =  dataSnapshot.child("Name").toString();
 
+                        String  name1  =  dataSnapshot.child("Name").getValue(String.class);
+System.out.println("TESTING " +name1);
                         name.setText(name1);
                         age.setText(dataSnapshot.child("Age").getValue(String.class));
                         location.setText(dataSnapshot.child("Location").getValue(String.class));
-                        //   major.setText("Major");
                         description.setText(dataSnapshot.child("Description").getValue(String.class));
                         school.setText(dataSnapshot.child("School").getValue(String.class));
                         gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
@@ -133,7 +121,6 @@ public class StudentProfile extends AppCompatActivity {
                 }
             });
 
-        }
         save.setOnClickListener((new View.OnClickListener() {
 
             @Override
