@@ -1,6 +1,6 @@
 
         package com.dan.ututor.System;
-
+        import android.content.Intent;
         import android.os.Bundle;
         import android.support.annotation.NonNull;
         import android.support.annotation.Nullable;
@@ -12,7 +12,7 @@
         import android.widget.ListView;
         import com.dan.ututor.R;
       import  android.content.Context;
-
+        import android.net.Uri;
         import com.google.firebase.auth.FirebaseAuth;
         import com.google.firebase.database.ChildEventListener;
         import com.google.firebase.database.DataSnapshot;
@@ -29,7 +29,7 @@
         import android.widget.TextView;
         import android.widget.Spinner;
         import android.widget.Toast;
-import com.dan.ututor.System.TutorElement;
+        import com.dan.ututor.System.TutorElement;
         public class Searching extends AppCompatActivity {
 
             public String bio="Biology";
@@ -175,31 +175,21 @@ import com.dan.ututor.System.TutorElement;
                  @Override
                  public void onClick(View v) {
                 //     if (mAuth.getCurrentUser() != null) {
-                //         String user_id = mAuth.getCurrentUser().getUid();
-            /*         String email =text3.toString();
+                //         St
+                     // ring user_id = mAuth.getCurrentUser().getUid();
+                     String email = text3.getText().toString();
                      String[] TO = {email};
-                     String[] CC = {"xyz@gmail.com"};
+                 System.out.println("Pat "+email);
                      Intent emailIntent = new Intent(Intent.ACTION_SEND);
                      emailIntent.setData(Uri.parse("mailto:"));
                      emailIntent.setType("text/plain");
-
-
                      emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-                     emailIntent.putExtra(Intent.EXTRA_CC, CC);
                      emailIntent.putExtra(Intent.EXTRA_SUBJECT, "uTutor");
                      emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello I would like to be tutored");
+                     v.getContext().startActivity(Intent.createChooser(emailIntent, "Send Email"));
+                 }
 
-                     try {
-                         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                         finish();
-                         Log.i("Finished sending email...", "");
-                     } catch (android.content.ActivityNotFoundException ex) {
-                         Toast.makeText(MainActivity.this,
-                                 "There is no email client installed.", Toast.LENGTH_SHORT).show();
-                     }
-                 }*/
 
-                     }
                 // }
 
 
