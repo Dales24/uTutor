@@ -34,17 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/name" />
 
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="132dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginRight="99dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/name"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 
     <Button

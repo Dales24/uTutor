@@ -100,18 +100,6 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
 
-                    if (mAuth.getCurrentUser() != null) {
-               String  name1  =  dataSnapshot.child("Name").toString();
-
-                        name.setText(name1);
-                        age.setText(dataSnapshot.child("Age").getValue(String.class));
-                        location.setText(dataSnapshot.child("Location").getValue(String.class));
-                        //   major.setText("Major");
-                        description.setText(dataSnapshot.child("Description").getValue(String.class));
-                        school.setText(dataSnapshot.child("School").getValue(String.class));
-                        gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
-                    }
-
                 }
                 @Override
                 public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
@@ -121,7 +109,19 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
                 public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 }
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    if (mAuth.getCurrentUser() != null) {
+                        String  name1  =  dataSnapshot.child("Name").toString();
+              System.out.println("tessst"+name1);
+                        name.setText(name1);
+                        age.setText(dataSnapshot.child("Age").getValue(String.class));
+                        location.setText(dataSnapshot.child("Location").getValue(String.class));
+                        //   major.setText("Major");
+                        description.setText(dataSnapshot.child("Description").getValue(String.class));
+                        school.setText(dataSnapshot.child("School").getValue(String.class));
+                        gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
+                    }
+                }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Toast.makeText(TutorProfile.this, "Error ", Toast.LENGTH_LONG).show();

@@ -16,6 +16,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -66,7 +68,7 @@ public class StudentProfile extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.search:
+                    case R.id.home:
                         Intent intent = new Intent(StudentProfile.this, Searching.class);
                         startActivity(intent);
                         break;
@@ -78,32 +80,45 @@ public class StudentProfile extends AppCompatActivity {
                         Intent intent3 = new Intent(StudentProfile.this, Help.class);
                         startActivity(intent3);
                         break;
-                    case R.id.home:
-                        Intent intent4 = new Intent(StudentProfile.this, StudentHome.class);
-                        startActivity(intent4);
-                        break;
                 }
 
                 return true;
             }
         });
 
+        /*
+        ValueEventListener postListner = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (mAuth.getCurrentUser() != null) {
+
+                    String  name1  =  dataSnapshot.child("Name").getValue(String.class);
+                    System.out.println("TESTING " +name1);
+                    name.setText(name1);
+                    age.setText(dataSnapshot.child("Age").getValue(String.class));
+                    location.setText(dataSnapshot.child("Location").getValue(String.class));
+                    description.setText(dataSnapshot.child("Description").getValue(String.class));
+                    school.setText(dataSnapshot.child("School").getValue(String.class));
+                    gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
+                }}
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+*/
+
+     //   String current_uid = mCurrentUser.getUid();
+
+      //  DatabaseReference user_db = databaseReference.child(current_uid);
             databaseReference.addChildEventListener(new ChildEventListener() {
+
+
+
                 @Override
                 public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-
-                    if (mAuth.getCurrentUser() != null) {
-
-                        String  name1  =  dataSnapshot.child("Name").getValue(String.class);
-System.out.println("TESTING " +name1);
-                        name.setText(name1);
-                        age.setText(dataSnapshot.child("Age").getValue(String.class));
-                        location.setText(dataSnapshot.child("Location").getValue(String.class));
-                        description.setText(dataSnapshot.child("Description").getValue(String.class));
-                        school.setText(dataSnapshot.child("School").getValue(String.class));
-                        gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
-                    }
 
                 }
                 @Override
@@ -114,7 +129,19 @@ System.out.println("TESTING " +name1);
                 public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 }
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    if (mAuth.getCurrentUser() != null) {
+
+                        String  name1  =  dataSnapshot.child("Name").getValue(String.class);
+                        System.out.println("TESTING " +name1);
+                        name.setText(name1);
+                        age.setText(dataSnapshot.child("Age").getValue(String.class));
+                        location.setText(dataSnapshot.child("Location").getValue(String.class));
+                        description.setText(dataSnapshot.child("Description").getValue(String.class));
+                        school.setText(dataSnapshot.child("School").getValue(String.class));
+                        gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
+                    }
+                }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Toast.makeText(StudentProfile.this, "Error ", Toast.LENGTH_LONG).show();

@@ -172,8 +172,8 @@
                     vi = inflater.inflate(R.layout.activity_listelement, null);
                 final TextView text = (TextView) vi.findViewById(R.id.name);
              TextView text2 = (TextView) vi.findViewById(R.id.description);
-             final  TextView text3 = (TextView) vi.findViewById(R.id.email);
-             text3.setText(data.get(position).getEmail());
+
+        final  String   email =data.get(position).getEmail();
                 text.setText(data.get(position).getName());
                 text2.setText(data.get(position).getDescription());
      final   String  UID  = data.get(position).getUID();
@@ -182,7 +182,7 @@
                  @Override
                  public void onClick(View v) {
 
-                     String email = text3.getText().toString();
+
                      String[] TO = {email};
                  System.out.println("Pat "+email);
                      Intent emailIntent = new Intent(Intent.ACTION_SEND);
