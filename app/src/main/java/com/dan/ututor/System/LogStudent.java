@@ -13,6 +13,7 @@ import android.text.TextUtils;
 
 import com.dan.ututor.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -85,6 +86,28 @@ public class LogStudent extends AppCompatActivity {
     }
 
 
+    private void checkIfEmailVerified()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user.isEmailVerified())
+        {
+
+
+            Intent intent = new Intent(LogStudent.this, StudentProfile.class);
+            startActivity(intent);
+            finish();
+        }
+        else
+        {
+            // email is not verified, so just prompt the message to the user and restart this activity.
+            // NOTE: don't forget to log out the user.
+            FirebaseAuth.getInstance().signOut();
+
+            //restart this activity
+
+        }
+    }
 
 
 
@@ -128,9 +151,7 @@ public class LogStudent extends AppCompatActivity {
 
                     if (dataSnapshot.hasChild(user_id)) {
 
-                        Intent intent = new Intent(LogStudent.this, StudentProfile.class);
-                        startActivity(intent);
-                        finish();
+                        checkIfEmailVerified();
 
                     } else {
 

@@ -100,6 +100,8 @@ public class TutorReg extends AppCompatActivity {
                                         user_db.child("GPA").setValue(gpa.getText().toString().trim());
                                         user_db.child("School").setValue(school.getText().toString().trim());
                                         user_db.child("Major").setValue(major.getSelectedItem().toString());
+                                        user_db.child("Email").setValue(email.getText().toString());
+                                        user_db.child("UID").setValue(user_id);
                               FirebaseUser    user    =  mAuth.getCurrentUser();
                                         if(mAuth.getCurrentUser() != null)
                                         user.sendEmailVerification()

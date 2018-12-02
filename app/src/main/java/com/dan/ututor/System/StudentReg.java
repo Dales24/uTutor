@@ -78,7 +78,7 @@ public class StudentReg extends AppCompatActivity {
 
 
             private void sendEmailVerification() {
-                String email2 = email.getText().toString();
+                final String email2 = email.getText().toString();
                 String password2 = password.getText().toString();
 
                 String name2 = name.getText().toString();
@@ -100,6 +100,8 @@ public class StudentReg extends AppCompatActivity {
                                     user_db.child("GPA").setValue(gpa.getText().toString().trim());
                                     user_db.child("School").setValue(school.getText().toString().trim());
                                     user_db.child("Major").setValue(major.getSelectedItem().toString());
+                                    user_db.child("Email").setValue(email.getText().toString());
+                                    user_db.child("UID").setValue(user_id);
                                     FirebaseUser    user    =  mAuth.getCurrentUser();
                                     if(mAuth.getCurrentUser() != null)
                                         user.sendEmailVerification()

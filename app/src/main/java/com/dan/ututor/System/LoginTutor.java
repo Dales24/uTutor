@@ -10,7 +10,7 @@ import 	android.content.Intent;
 import android.widget.Toast;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-
+import com.google.firebase.auth.FirebaseUser;
 import com.dan.ututor.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -117,6 +117,29 @@ public class LoginTutor extends AppCompatActivity {
                 }
             });}}
 
+    private void checkIfEmailVerified()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user.isEmailVerified())
+        {
+
+
+            Intent intent = new Intent(LoginTutor.this, TutorProfile.class);
+            startActivity(intent);
+            finish();
+        }
+        else
+        {
+            // email is not verified, so just prompt the message to the user and restart this activity.
+            // NOTE: don't forget to log out the user.
+            FirebaseAuth.getInstance().signOut();
+
+            //restart this activity
+
+        }
+    }
+
     private void checkUserExist()
     {
 
@@ -129,10 +152,8 @@ public class LoginTutor extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
                     if (dataSnapshot.hasChild(user_id)) {
+                        checkIfEmailVerified();
 
-                        Intent intent = new Intent(LoginTutor.this, TutorProfile.class);
-                        startActivity(intent);
-                        finish();
 
                     } else {
 
