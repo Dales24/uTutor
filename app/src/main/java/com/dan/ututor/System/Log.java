@@ -28,7 +28,7 @@ public class Log extends AppCompatActivity {
 private EditText password;
 private EditText email;
 Button login;
-Button reset;
+Button register;
 
 Button registerstudent;
 Button registertutor;
@@ -42,119 +42,30 @@ private Boolean emailCheck;
 protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_login);
-mAuth = FirebaseAuth.getInstance();
+
 login = (Button) findViewById(R.id.login);
-reset = (Button) findViewById(R.id.reset);
-email = (EditText) findViewById(R.id.email);
-password = (EditText) findViewById(R.id.password2);
-registerstudent = (Button) findViewById(R.id.registerstudent);
-registertutor = (Button) findViewById(R.id.registertutor);
+register = (Button) findViewById(R.id.register);
+
 firebaseDatabase = FirebaseDatabase.getInstance();
     databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors");
     databaseReference.keepSynced(true);
-
-login.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-       {
-            // need verification condition
-          checkLogin();
-
-
-        }
-           // verifyEmail();
-
-    }
-});
-reset.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(Log.this, SettingsLog.class);
-        startActivity(intent);
-        finish();
-    }
-});
-
-registerstudent.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(Log.this, StudentReg.class);
-        startActivity(intent);
-        finish();
-    }
-});
-
-registertutor.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(Log.this, TutorReg.class);
-        startActivity(intent);
-        finish();
-    }
-});
-}
-
-
-
-
-
-private void checkLogin() {
-
-    String email2 = email.getText().toString();
-    String password2 = password.getText().toString();
-
-if(!TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
-
-
-    mAuth.signInWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    login.setOnClickListener(new View.OnClickListener() {
         @Override
-        public void onComplete(@NonNull Task<AuthResult> task) {
-
-            if (task.isSuccessful()) {
-
-
-                checkUserExist();
-
-            } else {
-
-
-                Toast.makeText(Log.this, "Error Login", Toast.LENGTH_LONG).show();
-
-            }
-
+        public void onClick(View v) {
+            Intent intent = new Intent(Log.this, ChooseLogin.class);
+            startActivity(intent);
+            finish();
         }
-    });}}
-
-private void checkUserExist()
-    {
-
-    if(mAuth.getCurrentUser() != null) {
-
-        final String user_id = mAuth.getCurrentUser().getUid();
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                if (dataSnapshot.hasChild(user_id)) {
-
-                    Intent intent = new Intent(Log.this, TutorProfile.class);
-                    startActivity(intent);
-                    finish();
-
-                } else {
-
-                    Toast.makeText(Log.this, "Error Login", Toast.LENGTH_LONG).show();
-
-                }
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+    });
+    register.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(Log.this, ChooseReg.class);
+            startActivity(intent);
+            finish();
+        }
+    });
 
 }
+}
 
-}}

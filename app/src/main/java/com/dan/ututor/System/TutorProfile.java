@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import android.support.annotation.NonNull;
@@ -74,7 +75,7 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        Intent intent = new Intent(TutorProfile.this, Searching.class);
+                        Intent intent = new Intent(TutorProfile.this, TutorHome.class);
                         startActivity(intent);
                         break;
                     case R.id.settings:
@@ -95,37 +96,30 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
             String user_id = mAuth.getCurrentUser().getUid();
             DatabaseReference user_db = databaseReference.child(user_id);
 
-            user_db.addChildEventListener(new ChildEventListener() {
+            user_db.addValueEventListener(new ValueEventListener(){
                 @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                 String name1 = dataSnapshot.child("Name").getValue().toString();
+                    String age1 = dataSnapshot.child("Age").getValue().toString();
+                    String GPA1 = dataSnapshot.child("GPA").getValue().toString();
+                    String location1 = dataSnapshot.child("Location").getValue().toString();
+            //        String major1 = dataSnapshot.child("Major").getValue().toString();
+                    String school1 = dataSnapshot.child("School").getValue().toString();
+                    name.setText(name1);
+                    gpa.setText(GPA1);
+                    age.setText(age1);
+                    location.setText(location1);
 
+                    school.setText(school1);
 
-                    if (mAuth.getCurrentUser() != null) {
-               String  name1  =  dataSnapshot.child("Name").toString();
-
-                        name.setText(name1);
-                        age.setText(dataSnapshot.child("Age").getValue(String.class));
-                        location.setText(dataSnapshot.child("Location").getValue(String.class));
-                        //   major.setText("Major");
-                        description.setText(dataSnapshot.child("Description").getValue(String.class));
-                        school.setText(dataSnapshot.child("School").getValue(String.class));
-                        gpa.setText(dataSnapshot.child("GPA").getValue(String.class));
-                    }
 
                 }
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
-                }
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {}
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(TutorProfile.this, "Error ", Toast.LENGTH_LONG).show();
+
                 }
+
             });
 
         }
