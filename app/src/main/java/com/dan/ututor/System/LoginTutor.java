@@ -131,11 +131,9 @@ public class LoginTutor extends AppCompatActivity {
         }
         else
         {
-            // email is not verified, so just prompt the message to the user and restart this activity.
-            // NOTE: don't forget to log out the user.
+
             FirebaseAuth.getInstance().signOut();
 
-            //restart this activity
 
         }
     }

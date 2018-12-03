@@ -17,16 +17,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TutorHome extends AppCompatActivity {
 
-// pass profiles from database to array
-     String[] profiles;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor_home);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("https://capstone-71d9c.firebaseio.com/Tutor");
+
 
     }}
     // display interface
