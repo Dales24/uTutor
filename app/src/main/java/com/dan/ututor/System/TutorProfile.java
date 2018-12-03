@@ -7,6 +7,7 @@ import com.dan.ututor.R;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
+import 	android.widget.ArrayAdapter;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -109,7 +110,15 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
                     gpa.setText(GPA1);
                     age.setText(age1);
                     location.setText(location1);
-                 //   major.setSelection(major1);
+
+                 /*   ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.select_state, android.R.layout.simple_spinner_item);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    major.setAdapter(adapter);
+                    if (major1 != null) {
+                        int spinnerPosition = adapter.getPosition(major1);
+                        major.setSelection(spinnerPosition);
+                    }*/
+
                     school.setText(school1);
 
 
