@@ -58,6 +58,7 @@
             android:layout_marginTop="36dp"
             android:ems="10"
             android:hint="@string/Age"
+            android:maxLength="3"
             android:inputType="number|numberDecimal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -72,6 +73,7 @@
             android:ems="10"
             android:hint="@string/Gpa"
             android:inputType="number|numberDecimal"
+            android:maxLength="4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
