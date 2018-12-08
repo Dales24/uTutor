@@ -103,13 +103,14 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
                     String age1 = dataSnapshot.child("Age").getValue().toString();
                     String GPA1 = dataSnapshot.child("GPA").getValue().toString();
                     String location1 = dataSnapshot.child("Location").getValue().toString();
+                    String des1 = dataSnapshot.child("Description").getValue().toString();
             //        String major1 = dataSnapshot.child("Major").getValue().toString();
                     String school1 = dataSnapshot.child("School").getValue().toString();
                     name.setText(name1);
                     gpa.setText(GPA1);
                     age.setText(age1);
                     location.setText(location1);
-
+                    description.setText(des1);
                     school.setText(school1);
 
 

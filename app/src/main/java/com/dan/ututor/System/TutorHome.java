@@ -28,21 +28,39 @@ public class TutorHome extends AppCompatActivity {
         if (mAuth.getCurrentUser() != null) {
             String user_id = mAuth.getCurrentUser().getUid();
 
-
-            databaseReference.child(user_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            databaseReference.orderByChild("Tutor").equalTo(user_id).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String student = dataSnapshot.child("Student").getValue(String.class);
-                    databaseReference2 = FirebaseDatabase.getInstance().getReference().child("Tutors").child(student);
-                    String sName = databaseReference2.child("Name").toString();
-                    System.out.println("testing "+sName);
+                    for (DataSnapshot datas : dataSnapshot.getChildren()) {
+                        String keys = datas.getKey();
+                        databaseReference2 = FirebaseDatabase.getInstance().getReference().child("Students").child(keys);
+                String sName     =  databaseReference2.child("Name").toString();
+                        System.out.println("testing " + sName);
+                        sendName(databaseReference2);
+                    }
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
+
                 }
             });
-        }
+        }}
+            private void sendName (  DatabaseReference databaseReference2){
+                System.out.println("testing " + databaseReference2);
+                databaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String sName = dataSnapshot.child("Name").getValue(String.class);
 
-    }}
+                        System.out.println("testing " + sName);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        }
