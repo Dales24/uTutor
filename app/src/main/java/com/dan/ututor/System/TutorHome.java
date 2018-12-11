@@ -40,8 +40,8 @@ public class TutorHome extends AppCompatActivity {
         setContentView(R.layout.activity_tutor_home);
         name = findViewById(R.id.name);
         location= findViewById(R.id.loc);
-       major = findViewById(R.id.maj);
-        description = findViewById(R.id.des);
+     //  major = findViewById(R.id.maj);
+      //  description = findViewById(R.id.des);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Relation");
         databaseReference.keepSynced(true);
@@ -76,12 +76,12 @@ public class TutorHome extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         String sName = dataSnapshot.child("Name").getValue(String.class);
                         String location1 = dataSnapshot.child("Location").getValue(String.class);
-                        String descrip = dataSnapshot.child("Description").getValue(String.class);
-                        String major1 = dataSnapshot.child("Major").getValue(String.class);
+                    //    String descrip = dataSnapshot.child("Description").getValue(String.class);
+                    //    String major1 = dataSnapshot.child("Major").getValue(String.class);
                         name.setText(sName);
                         location.setText(location1);
-                        major.setText(major1);
-                        description.setText(descrip);
+                     //   major.setText(major1);
+                      //  description.setText(descrip);
                         System.out.println("testing " + sName);
                     }
 
