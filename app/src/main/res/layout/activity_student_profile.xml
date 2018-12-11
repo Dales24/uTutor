@@ -25,8 +25,8 @@
 
             <EditText
                 android:id="@+id/major"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="28dp"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="312dp"
@@ -57,6 +57,7 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="92dp"
                 android:ems="10"
+                android:maxLength="3"
                 android:hint="@string/Age"
                 android:inputType="number|numberDecimal"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +71,7 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="180dp"
                 android:ems="10"
+                android:maxLength="4"
                 android:hint="@string/Gpa"
                 android:inputType="number|numberDecimal"
                 app:layout_constraintStart_toStartOf="parent"

@@ -58,11 +58,11 @@ public class LoginTutor extends AppCompatActivity {
             public void onClick(View v) {
                 {
                     // need verification condition
-                    checkLogin();
+                    login();
 
 
                 }
-                // verifyEmail();
+
 
             }
         });
@@ -90,7 +90,7 @@ public class LoginTutor extends AppCompatActivity {
 
 
 
-    private void checkLogin() {
+    private void login() {
 
         String email2 = email.getText().toString();
         String password2 = password.getText().toString();

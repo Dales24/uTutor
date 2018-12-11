@@ -57,12 +57,12 @@ public class LogStudent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 {
-                    // need verification condition
-                    checkLogin();
+
+                    login();
 
 
                 }
-                // verifyEmail();
+
 
             }
         });
@@ -100,18 +100,17 @@ public class LogStudent extends AppCompatActivity {
         }
         else
         {
-            // email is not verified, so just prompt the message to the user and restart this activity.
-            // NOTE: don't forget to log out the user.
+
             FirebaseAuth.getInstance().signOut();
 
-            //restart this activity
+
 
         }
     }
 
 
 
-    private void checkLogin() {
+    private void login() {
 
         String email2 = email.getText().toString();
         String password2 = password.getText().toString();

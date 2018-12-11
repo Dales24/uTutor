@@ -33,7 +33,7 @@
     <string name="Settings">Settings</string>
     <string name="Tutors">Tutors</string>
     <string name="uTutor">app_name</string>
-    <string name="feed">FEED: Incoming Requests</string>
+    <string name="feed">FEED: Incoming Requests From</string>
     <string-array name="Major">
         <item>Biology</item>
         <item>Math</item>
