@@ -130,7 +130,7 @@ public class LogStudent extends AppCompatActivity {
                     } else {
 
 
-                        Toast.makeText(LogStudent.this, "Error Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LogStudent.this, "Bad Password", Toast.LENGTH_LONG).show();
 
                     }
 
@@ -154,7 +154,7 @@ public class LogStudent extends AppCompatActivity {
 
                     } else {
 
-                        Toast.makeText(LogStudent.this, "Error Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LogStudent.this, "Does not exist", Toast.LENGTH_LONG).show();
 
                     }
 

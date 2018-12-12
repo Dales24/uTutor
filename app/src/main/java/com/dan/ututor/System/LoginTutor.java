@@ -110,7 +110,7 @@ public class LoginTutor extends AppCompatActivity {
                     } else {
 
 
-                        Toast.makeText(LoginTutor.this, "Error Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginTutor.this, "Bad Password", Toast.LENGTH_LONG).show();
 
                     }
 
@@ -155,7 +155,7 @@ public class LoginTutor extends AppCompatActivity {
 
                     } else {
 
-                        Toast.makeText(LoginTutor.this, "Error Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginTutor.this, "Does not Exist", Toast.LENGTH_LONG).show();
 
                     }
 
