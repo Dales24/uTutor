@@ -28,6 +28,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class TutorProfile extends AppCompatActivity {
+    //global vars
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private EditText school;
@@ -47,10 +48,11 @@ public class TutorProfile extends AppCompatActivity {
     BottomNavigationView mBottomNavigation;
 
 
-
+//start xml
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // find elements and store
         setContentView(R.layout.activity_tutor_profile);
         name = (EditText) findViewById(R.id.name);
         school = (EditText) findViewById(R.id.school);
@@ -67,12 +69,14 @@ public class TutorProfile extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors");
+//database ref
 //        databaseReference.keepSynced(true);
         mBottomNavigation = (BottomNavigationView) findViewById(R.id.main_nav);
 
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+       //each element redirecting to each page
                 switch (item.getItemId()) {
                     case R.id.home:
                         Intent intent = new Intent(TutorProfile.this, TutorHome.class);
@@ -91,14 +95,15 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
                 return true;
             }
         });
-
+// posting the data stored for the user in text feilds
         if (mAuth.getCurrentUser() != null) {
             String user_id = mAuth.getCurrentUser().getUid();
             DatabaseReference user_db = databaseReference.child(user_id);
-
+//user database ref
             user_db.addValueEventListener(new ValueEventListener(){
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+         //get value and set text
                  String name1 = dataSnapshot.child("Name").getValue().toString();
                     String age1 = dataSnapshot.child("Age").getValue().toString();
                     String GPA1 = dataSnapshot.child("GPA").getValue().toString();
@@ -131,7 +136,7 @@ databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors"
                         if(mAuth.getCurrentUser() !=null) {
 
                             String current_uid = mCurrentUser.getUid();
-
+//updating database user childs
                             DatabaseReference user_db = databaseReference.child(current_uid);
 
                             user_db.child("Name").setValue(name.getText().toString().trim());

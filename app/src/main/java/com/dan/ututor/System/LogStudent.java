@@ -26,6 +26,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 
 public class LogStudent extends AppCompatActivity {
+
+    //global vars
     private EditText password;
     private EditText email;
     Button login;
@@ -39,9 +41,13 @@ public class LogStudent extends AppCompatActivity {
     DatabaseReference databaseReference2;
     private Boolean emailCheck;
     ;
+
+    //start xml
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //find elements in xml
         setContentView(R.layout.activity_logstudent);
         mAuth = FirebaseAuth.getInstance();
         login = (Button) findViewById(R.id.login);
@@ -57,13 +63,13 @@ public class LogStudent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 {
-
+//method call
                     login();
 
 
                 }
 
-
+//onclick direct to correct page
             }
         });
         reset.setOnClickListener(new View.OnClickListener() {
@@ -85,14 +91,14 @@ public class LogStudent extends AppCompatActivity {
 
     }
 
-
+//check if verified
     private void checkIfEmailVerified()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if (user.isEmailVerified())
         {
-
+//redierect to profile
 
             Intent intent = new Intent(LogStudent.this, StudentProfile.class);
             startActivity(intent);
@@ -109,7 +115,7 @@ public class LogStudent extends AppCompatActivity {
     }
 
 
-
+//check textfields and sign in
     private void login() {
 
         String email2 = email.getText().toString();
@@ -130,31 +136,31 @@ public class LogStudent extends AppCompatActivity {
                     } else {
 
 
-                        Toast.makeText(LogStudent.this, "Error Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LogStudent.this, "Bad Password", Toast.LENGTH_LONG).show();
 
                     }
 
                 }
             });}}
-
+// make sue user exists
     private void checkUserExist()
     {
 
         if(mAuth.getCurrentUser() != null) {
-
+//get user id
             final String user_id = mAuth.getCurrentUser().getUid();
 
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-
+//snapsot of database
                     if (dataSnapshot.hasChild(user_id)) {
 
                         checkIfEmailVerified();
 
                     } else {
 
-                        Toast.makeText(LogStudent.this, "Error Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LogStudent.this, "Does not exist", Toast.LENGTH_LONG).show();
 
                     }
 

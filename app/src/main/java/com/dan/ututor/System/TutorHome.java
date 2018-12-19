@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class TutorHome extends AppCompatActivity {
+    //global vars
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
     DatabaseReference databaseReference2;
@@ -35,8 +36,10 @@ public class TutorHome extends AppCompatActivity {
     private TextView location;
     private TextView major;
     private TextView description;
+    //start xml
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //find elemnets
         setContentView(R.layout.activity_tutor_home);
         name = findViewById(R.id.name);
         location= findViewById(R.id.loc);
@@ -44,18 +47,23 @@ public class TutorHome extends AppCompatActivity {
       //  description = findViewById(R.id.des);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Relation");
+
+        //database ref from the relationship with students
         databaseReference.keepSynced(true);
         mAuth = FirebaseAuth.getInstance();
+
         if (mAuth.getCurrentUser() != null) {
             String user_id = mAuth.getCurrentUser().getUid();
 
             databaseReference.orderByChild("Tutor").equalTo(user_id).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+               //advanced for loop. looping through database
                     for (DataSnapshot datas : dataSnapshot.getChildren()) {
                         String keys = datas.getKey();
                         databaseReference2 = FirebaseDatabase.getInstance().getReference().child("Students").child(keys);
                 String sName     =  databaseReference2.child("Name").toString();
+// passing the data base ref to the sendname method
 
                         System.out.println("testing " + sName);
                         sendName(databaseReference2);
@@ -69,6 +77,7 @@ public class TutorHome extends AppCompatActivity {
                 }
             });
         }}
+        //getting the database relation ships and populating text field
             private void sendName (  DatabaseReference databaseReference2){
                 System.out.println("testing " + databaseReference2);
                 databaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {

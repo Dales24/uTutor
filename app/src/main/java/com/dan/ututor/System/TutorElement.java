@@ -1,10 +1,13 @@
 package com.dan.ututor.System;
 
 public class TutorElement {
+  //global vars
+
     private String name;
     private String description;
     private String email;
     private String UID;
+    //constructor
     public TutorElement( String name, String description, String email, String UID) {
         this.UID = UID;
         this.name = name;
@@ -12,6 +15,7 @@ public class TutorElement {
         this.email=email;
     }
 
+    //set and get methods
     public String getName(){return name;}
 
     public String getUID(){return UID;}

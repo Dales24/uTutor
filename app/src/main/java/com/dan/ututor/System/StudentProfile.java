@@ -28,6 +28,8 @@ import 	android.support.design.widget.BottomNavigationView;
 import android.widget.Spinner;
 import android.widget.Toast;
 public class StudentProfile extends AppCompatActivity {
+
+    //global vars
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private EditText school;
@@ -43,8 +45,11 @@ public class StudentProfile extends AppCompatActivity {
     private FirebaseUser mCurrentUser;
     BottomNavigationView mBottomNavigation;
     @Override
+    //start xml
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //find xml elements
         setContentView(R.layout.activity_tutor_profile);
         name = (EditText) findViewById(R.id.name);
         school = (EditText) findViewById(R.id.school);
@@ -57,13 +62,13 @@ public class StudentProfile extends AppCompatActivity {
         save = (Button) findViewById(R.id.save);
 
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-
+//database reference
         mAuth = FirebaseAuth.getInstance();
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Students");
 //        databaseReference.keepSynced(true);
         mBottomNavigation = (BottomNavigationView) findViewById(R.id.main_nav);
-
+//navigation redirects onclick
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -86,14 +91,15 @@ public class StudentProfile extends AppCompatActivity {
             }
         });
 
-
+// populating the users data
         if (mAuth.getCurrentUser() != null) {
             String user_id = mAuth.getCurrentUser().getUid();
             DatabaseReference user_db = databaseReference.child(user_id);
-
+// database ref from user id
             user_db.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                // getting datasnap shot of info and setting text field
                     String name1 = dataSnapshot.child("Name").getValue().toString();
                     String age1 = dataSnapshot.child("Age").getValue().toString();
                     String GPA1 = dataSnapshot.child("GPA").getValue().toString();
@@ -125,7 +131,7 @@ public class StudentProfile extends AppCompatActivity {
                 }
 
             });
-
+// saving info in database
             save.setOnClickListener((new View.OnClickListener() {
 
                 @Override
@@ -135,7 +141,8 @@ public class StudentProfile extends AppCompatActivity {
                         String current_uid = mCurrentUser.getUid();
 
                         DatabaseReference user_db = databaseReference.child(current_uid);
-
+// database ref from user id
+                        //creating childs under id
                         user_db.child("Name").setValue(name.getText().toString().trim());
                         user_db.child("Age").setValue(age.getText().toString().trim());
                         user_db.child("Location").setValue(location.getText().toString().trim());

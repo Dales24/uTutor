@@ -25,6 +25,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 
 public class LoginTutor extends AppCompatActivity {
+
+    //global vars
     private EditText password;
     private EditText email;
     Button login;
@@ -38,10 +40,14 @@ public class LoginTutor extends AppCompatActivity {
     DatabaseReference databaseReference2;
     private Boolean emailCheck;
     ;
+
+    //start xml
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logtutor);
+
+        //find elements in xml
         mAuth = FirebaseAuth.getInstance();
         login = (Button) findViewById(R.id.login);
         reset = (Button) findViewById(R.id.reset);
@@ -53,6 +59,8 @@ public class LoginTutor extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Tutors");
         databaseReference.keepSynced(true);
         back = (Button) findViewById(R.id.back);
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +74,7 @@ public class LoginTutor extends AppCompatActivity {
 
             }
         });
+        //onlick direct to pages
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +98,7 @@ public class LoginTutor extends AppCompatActivity {
 
 
 
-
+// checking text field and password
     private void login() {
 
         String email2 = email.getText().toString();
@@ -104,19 +113,19 @@ public class LoginTutor extends AppCompatActivity {
 
                     if (task.isSuccessful()) {
 
-
+           //method call
                         checkUserExist();
 
                     } else {
 
 
-                        Toast.makeText(LoginTutor.this, "Error Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginTutor.this, "Bad Password", Toast.LENGTH_LONG).show();
 
                     }
 
                 }
             });}}
-
+// make sure the email is verified
     private void checkIfEmailVerified()
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -137,14 +146,14 @@ public class LoginTutor extends AppCompatActivity {
 
         }
     }
-
+// making sure the user exists
     private void checkUserExist()
     {
 
         if(mAuth.getCurrentUser() != null) {
-
+// get id of user
             final String user_id = mAuth.getCurrentUser().getUid();
-
+// take a snap shot of database
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -155,7 +164,7 @@ public class LoginTutor extends AppCompatActivity {
 
                     } else {
 
-                        Toast.makeText(LoginTutor.this, "Error Login", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginTutor.this, "Does not Exist", Toast.LENGTH_LONG).show();
 
                     }
 
