@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 public class Settings extends AppCompatActivity {
+    //global vars
    Button deleteaccc;
     Button logout;
     Button reset;
@@ -26,8 +27,10 @@ public class Settings extends AppCompatActivity {
     DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
 TutorReg reg = new TutorReg();
+//start xml
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //find xml elemnets
         setContentView(R.layout.activity_settings);
         logout = (Button) findViewById(R.id.logout);
         reset = (Button) findViewById(R.id.reset);
@@ -35,13 +38,13 @@ TutorReg reg = new TutorReg();
         password = (EditText) findViewById(R.id.password2);
         deleteaccc = (Button) findViewById(R.id.deleteaccc);
 
-
+//database reference
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         String email2=email.getText().toString().trim();
 
         databaseReference = firebaseDatabase.getReference().child("Tutors").child(email2);
-
+//resest password method onclick
         reset.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -58,6 +61,7 @@ TutorReg reg = new TutorReg();
 
                                     }
                                     });
+        //redirect logout
         logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Settings.this, Log.class);
@@ -65,6 +69,7 @@ TutorReg reg = new TutorReg();
                 finish();
             }
     });
+        //remove user from database and logout
         deleteaccc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();

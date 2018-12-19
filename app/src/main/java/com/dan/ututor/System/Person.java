@@ -3,7 +3,7 @@ package com.dan.ututor.System;
 import android.media.Rating;
 
 public class Person {
-
+// global vars
         private String email;
         private String password;
         private int id;
@@ -31,6 +31,7 @@ public Person( String school, int age, String name,
     this.gpa=gpa;
     this.major=major;
 }
+// consturctor for info
     public Person( String school, int age, String name,
                    String location, String description, double gpa){
 

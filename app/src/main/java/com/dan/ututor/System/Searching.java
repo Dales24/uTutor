@@ -32,7 +32,7 @@
         import android.widget.Toast;
         import com.dan.ututor.System.TutorElement;
         public class Searching extends AppCompatActivity {
-
+//global vars
             public String bio="Biology";
     public String math="Math";
     public String nursing="Nursing";
@@ -51,7 +51,7 @@
     DatabaseReference databaseReferenceRelation;
     ArrayList<TutorElement> array = new ArrayList<>();
 
-
+// start xml
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
@@ -59,7 +59,7 @@
         listView = findViewById(R.id.listView);
         mAuth = FirebaseAuth.getInstance();
         databaseReference = firebaseDatabase.getInstance().getReference().child("Tutors");
-
+// set adapter object
         final yourAdapter adapter = new yourAdapter(this,array);
 
 
@@ -94,6 +94,7 @@
                        String email = dataSnapshot.child("Email").getValue(String.class);
                        System.out.println("ErrorSS:  " + dataSnapshot);
                        //  String value = dataSnapshot.getValue(String.class);
+                  // create a array and pass to adapter
                       TutorElement tutor = new TutorElement(name, descript,email,UID);
                      array.add(tutor);
                        adapter.notifyDataSetChanged();
@@ -126,8 +127,10 @@
 
         }
        }
-
+// adapter for second xml to populate data
      class yourAdapter extends BaseAdapter {
+
+            //global vars
          private FirebaseUser mCurrentUser;
             Context context;
             ArrayList<TutorElement> data;
@@ -164,15 +167,17 @@
 
          @Override
             public View getView(int position, View convertView, ViewGroup parent) {
+           // database reference
                  mAuth = FirebaseAuth.getInstance();
                 databaseReferenceRelation = firebaseDatabase.getInstance().getReference().child("Relation");
+              //vi contain elements from database
                 View vi = convertView;
              Button button;
                 if (vi == null)
                     vi = inflater.inflate(R.layout.activity_listelement, null);
                 final TextView text = (TextView) vi.findViewById(R.id.name);
              TextView text2 = (TextView) vi.findViewById(R.id.description);
-
+//getting data from the database and setting info
         final  String   email =data.get(position).getEmail();
                 text.setText(data.get(position).getName());
                 text2.setText(data.get(position).getDescription());
@@ -181,8 +186,8 @@
              button.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
-
-
+// populating a email onclick
+// email is the email clicked on
                      String[] TO = {email};
                  System.out.println("Pat "+email);
                      Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -194,9 +199,9 @@
                      v.getContext().startActivity(Intent.createChooser(emailIntent, "Send Email"));
 
                      if(mAuth.getCurrentUser() !=null) {
-
+// get user id
                          String user_id = mAuth.getCurrentUser().getUid();
-
+//establish database relation on clisk
                          DatabaseReference user_db = databaseReferenceRelation.child(user_id);
              user_db.child("Student").setValue(user_id);
              user_db.child("Tutor").setValue(UID);
@@ -204,6 +209,7 @@
                      }
                  }
              });
+             // return array
              return vi;
 
          }

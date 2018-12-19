@@ -25,7 +25,7 @@ import com.google.firebase.auth.AuthResult;
 public class TutorReg extends AppCompatActivity {
 
 
-
+//global vars
     //    Person person = new Person();
 
     private FirebaseAuth mAuth;
@@ -44,11 +44,12 @@ public class TutorReg extends AppCompatActivity {
         DatabaseReference databaseReference;
     public String getIDs(){return ids;}
     FirebaseAuth  firebaseAuth;
+    //start xml
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_register_tutor);
-
+//find elements and save
 
             name = (EditText) findViewById(R.id.name);
             school = (EditText) findViewById(R.id.school);
@@ -74,25 +75,25 @@ public class TutorReg extends AppCompatActivity {
 
                     }
 
-
+//send ver
 
 
                 private void sendEmailVerification() {
                     String email2 = email.getText().toString();
                     String password2 = password.getText().toString();
-
+//local vars for email and password check 
                     String name2 = name.getText().toString();
                     if(!TextUtils.isEmpty(name2) && !TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
                         mAuth.createUserWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-
+//create  a new user
                                 if (task.isSuccessful()) {
                                     if (mAuth.getCurrentUser() != null) {
                                         String user_id = mAuth.getCurrentUser().getUid();
 
                                         DatabaseReference user_db = databaseReference.child(user_id);
-
+// set childs
                                         user_db.child("Name").setValue(name.getText().toString().trim());
                                         user_db.child("Age").setValue(age.getText().toString().trim());
                                         user_db.child("Location").setValue(location.getText().toString().trim());
@@ -103,6 +104,7 @@ public class TutorReg extends AppCompatActivity {
                                         user_db.child("Email").setValue(email.getText().toString());
                                         user_db.child("UID").setValue(user_id);
                               FirebaseUser    user    =  mAuth.getCurrentUser();
+                            //send email ver based on user object
                                         if(mAuth.getCurrentUser() != null)
                                         user.sendEmailVerification()
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {

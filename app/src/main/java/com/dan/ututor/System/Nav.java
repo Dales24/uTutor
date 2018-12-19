@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 import com.dan.ututor.R;
 
 public class Nav extends AppCompatActivity {
-
+//global vars
     private BottomNavigationView mMainNav;
     private FrameLayout  mMainFrame;
     @Override
@@ -19,12 +19,12 @@ public class Nav extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav);
 
-
+//getting xml elements
         mMainFrame = (FrameLayout)findViewById(R.id.main_frame);
         mMainNav = (BottomNavigationView)findViewById(R.id.main_nav);
 
 
-
+//redirects based on button clicks
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

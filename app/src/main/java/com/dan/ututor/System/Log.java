@@ -25,6 +25,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 
 public class Log extends AppCompatActivity {
+    //global vars
+
 private EditText password;
 private EditText email;
 Button login;
@@ -38,11 +40,12 @@ DatabaseReference databaseReference;
 DatabaseReference databaseReference2;
 private Boolean emailCheck;
 ;
+//start xml
 @Override
 protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_login);
-
+//on click direct to correct page
 login = (Button) findViewById(R.id.login);
 register = (Button) findViewById(R.id.register);
 

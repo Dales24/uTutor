@@ -12,14 +12,14 @@ public class ChooseLogin extends AppCompatActivity {
     Button tutorlog;
     Button studentlog;
     Button back;
-
+//start xml
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choselogin);
         back = (Button) findViewById(R.id.back);
         studentlog = (Button) findViewById(R.id.studentlog);
         tutorlog = (Button) findViewById(R.id.tutorlog);
-
+// on click to redirect to correct page
         tutorlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 public class SettingsLog extends AppCompatActivity {
-
+//global var
     Button reset;
     private EditText password;
     private EditText email;
@@ -25,8 +25,10 @@ public class SettingsLog extends AppCompatActivity {
     DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
     TutorReg reg = new TutorReg();
+    //start xml
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //find xml element
         setContentView(R.layout.activity_settingsfromlogin);
         reset = (Button) findViewById(R.id.reset);
         email = (EditText) findViewById(R.id.email);
@@ -34,12 +36,12 @@ public class SettingsLog extends AppCompatActivity {
 
 
 
-
+//database reference
         firebaseDatabase = FirebaseDatabase.getInstance();
         String email2=email.getText().toString().trim();
 
         databaseReference = firebaseDatabase.getReference().child("Tutors").child(email2);
-
+//reset password
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

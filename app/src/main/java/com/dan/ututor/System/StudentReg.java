@@ -24,7 +24,7 @@ import android.widget.Spinner;
 import com.google.firebase.auth.AuthResult;
 public class StudentReg extends AppCompatActivity {
 
-
+//global vars
 
     //    Person person = new Person();
 
@@ -45,11 +45,12 @@ public class StudentReg extends AppCompatActivity {
     public String getIDs(){return ids;}
     FirebaseAuth  firebaseAuth;
     @Override
+    //start xml
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_tutor);
 
-
+//find elements
         name = (EditText) findViewById(R.id.name);
         school = (EditText) findViewById(R.id.school);
         age = (EditText) findViewById(R.id.age);
@@ -65,34 +66,36 @@ public class StudentReg extends AppCompatActivity {
         String email2=email.getText().toString().trim();
         mAuth = FirebaseAuth.getInstance();
         databaseReference = firebaseDatabase.getReference().child("Students");
-
+//database ref
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//email ver
                 sendEmailVerification();
 
             }
 
 
 
-
+// email ver method
             private void sendEmailVerification() {
                 final String email2 = email.getText().toString();
                 String password2 = password.getText().toString();
-
+// get email and password to local vars
                 String name2 = name.getText().toString();
+                //check email and password vars
                 if(!TextUtils.isEmpty(name2) && !TextUtils.isEmpty(email2) && !TextUtils.isEmpty(password2)) {
+               //create user
                     mAuth.createUserWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-
+//saving data in database
                             if (task.isSuccessful()) {
                                 if (mAuth.getCurrentUser() != null) {
                                     String user_id = mAuth.getCurrentUser().getUid();
 
                                     DatabaseReference user_db = databaseReference.child(user_id);
-
+//database ref on user id
                                     user_db.child("Name").setValue(name.getText().toString().trim());
                                     user_db.child("Age").setValue(age.getText().toString().trim());
                                     user_db.child("Location").setValue(location.getText().toString().trim());
@@ -102,6 +105,7 @@ public class StudentReg extends AppCompatActivity {
                                     user_db.child("Major").setValue(major.getSelectedItem().toString());
                                     user_db.child("Email").setValue(email.getText().toString());
                                     user_db.child("UID").setValue(user_id);
+                                //sending the email ver and creating user object from create user call
                                     FirebaseUser    user    =  mAuth.getCurrentUser();
                                     if(mAuth.getCurrentUser() != null)
                                         user.sendEmailVerification()
